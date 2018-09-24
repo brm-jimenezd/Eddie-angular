@@ -1,0 +1,242 @@
+<!--En esta vista:
+	* Menú superior.
+	* Menú lateral.
+-->
+<div class="container-fluid noPadding">
+	<header class="top-main d-flex">
+		<!--LOGO DE LA MARCA-->
+		<figure class="navbar-brand mr-auto brand-logo">
+			<a routerLink="/login">
+				<img src="/assets/logo-brm.png"/>
+			</a>
+		</figure>
+
+<nav class="navbar navbar-expand-sm navbar-light top-navbar-main">
+  	<!--Responsive button-->	
+		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		    	<span class="navbar-toggler-icon"></span>
+		  </button>
+	<!--*end*-->	
+
+	  <div class="collapse navbar-collapse " id="navbarSupportedContent">
+		    <ul class="nav justify-content-end main-top-menu"><!--nav navbar-nav navbar-right-->
+			      <li class="nav-item active">
+			        	<a class="nav-link" href="#">
+			        		Inicio 
+			        	</a>
+			      </li>
+
+			      <li class="nav-item dropdown">
+			        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			          OT'S
+			        </a>
+				        <div class="dropdown-menu drop-down-ots" aria-labelledby="navbarDropdown">
+				          <a class="dropdown-item" routerLink="/tablero/tasks">
+				          	Lista de Tareas
+				          </a>
+				          <a class="dropdown-item" href="login">
+				          	Ot's Creadas
+				          </a>
+				        </div>
+			      </li>
+
+			      <li class="nav-item">
+			        	<a class="nav-link" href="#">REPORTES</a>
+			      </li>   
+		    </ul>
+	  </div>
+</nav>
+
+	  <div class="ml-auto logs-container d-flex" id="desktop-notifications">
+	  	<figure class="user-logs" (click)="showuserNotify()">
+	  		<span class="badge badge-danger">20</span>
+	  		<img src="/assets/icons/ring.svg"/>
+	  	</figure>
+	  	<section class="user-notifications" id="user-notifications" [class.show]="notifyState">
+	  		<div class="tool-tip-notifi"></div>
+	  		<header class="notifi-title">Notificaciones</header>
+		  		<article class="notifications-list">
+		  			
+		  			<div class="action">
+		  				<a href="" class="d-flex">
+		  					<figure class="user-circle">
+				  			 <img src="" class="">
+					  		</figure>
+					  		<div class="notification-info">
+					  			<h6>German livera</h6>
+					  			<p>
+					  				Ha hecho un comentario : Hola meli, te quería comentar las ..
+					  			</p>
+					  		</div>
+					  	</a>
+		  			</div>
+
+		  			<div class="action">
+		  				<a href="" class="d-flex">
+		  					<figure class="user-circle">
+				  			 <img src="" class="">
+					  		</figure>
+					  		<div class="notification-info">
+					  			<h6>German livera</h6>
+					  			<p>
+					  				Ha hecho un comentario : Hola meli, te quería comentar las ..
+					  			</p>
+					  		</div>
+					  	</a>
+		  			</div>
+
+		  			<div class="action">
+		  				<a href="" class="d-flex">
+		  					<figure class="user-circle">
+				  			 <img src="" class="">
+					  		</figure>
+					  		<div class="notification-info">
+					  			<h6>German livera</h6>
+					  			<p>
+					  				Ha hecho un comentario : Hola meli, te quería comentar las ..
+					  			</p>
+					  		</div>
+					  	</a>
+		  			</div>
+
+		  			<div class="action">
+		  				<a href="" class="d-flex">
+		  					<figure class="user-circle">
+				  			 <img src="" class="">
+					  		</figure>
+					  		<div class="notification-info">
+					  			<h6>German livera</h6>
+					  			<p>
+					  				Ha hecho un comentario : Hola meli, te quería comentar las ..
+					  			</p>
+					  		</div>
+					  	</a>
+		  			</div>
+		  		</article>
+		  			<footer class="see-all-notifications">
+		  				ver todo
+		  			</footer>
+	  	</section>
+	  	<div class="user-info" >
+	  		<figure class="user-image">
+	  			 <img src="" class="">
+	  		</figure>
+	  		<span class="user-name">Melisa Benavidez</span>
+	  	</div>
+	  </div>
+	</header>
+<div id="mobil-notifications"> </div>
+
+	<section class="interface-actions d-flex">
+		<h6 style="margin:0px;">Listado OT'S Creadas <span>25</span></h6>
+		<a routerLink="create" class="ml-auto">
+			<button type="button" class="btn btn-dark btn-brm ">
+				<span class="icon">+</span> Crear nueva OT
+			</button>
+		</a>
+	</section>
+
+<section class="row customer-row">
+	<aside class="col-12 col-sm-4 col-md-3 col-lg-2 col-xl-2 noPadding lateral-left-menu">
+	<!--search-->
+		<div class="input-group search-filter">
+			<input type="text" class="form-control" placeholder="Buscar...">
+			    <div class="input-group-append">
+			      <span class="input-group-text">
+			      		<img src="/assets/icons/search.svg" />
+			      	</span>
+			    </div>
+		</div>
+	<!--search-->	
+		<div class="filter-title"> 
+			<span class="icon-filter"> <img src="/assets/icons/filter.svg"> </span>
+			<span class="title"> FILTRAR POR: </span>
+			
+
+		</div>
+
+
+			<div id="accordion" class="lateral-left-filter">
+			  <div class="card">
+			    <div class="card-header ">
+			      <a class="card-link" data-toggle="collapse" href="#collapseOne">
+			       	<img src="/assets/icons/star.svg" class="icon-info">
+			       		Marca
+			       	<img src="/assets/icons/arrow-down.svg" class="icon-toggle">
+			      </a>
+			    </div>
+
+			    <div id="collapseOne" class="collapse" data-parent="#accordion">
+			      <div class="card-body">
+			        Lorem ipsum..
+			      </div>
+			    </div>
+
+			  </div>
+
+			  <div class="card">
+			    <div class="card-header">
+			      <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
+			        	<img src="/assets/icons/calendar.svg" class="icon-info">
+			       			Fecha
+			       		<img src="/assets/icons/arrow-down.svg" class="icon-toggle">
+			      </a>
+			    </div>
+			    <div id="collapseTwo" class="collapse" data-parent="#accordion">
+			      <div class="card-body">
+			        Lorem ipsum..
+			      </div>
+			    </div>
+			  </div>
+
+			  <div class="card">
+			    <div class="card-header">
+			      <a class="collapsed card-link" data-toggle="collapse" href="#collapseThree">
+			        	<img src="/assets/icons/pencil.svg" class="icon-info">
+			       			Usuario
+			       		<img src="/assets/icons/arrow-down.svg" class="icon-toggle">
+			      </a>
+			    </div>
+			    <div id="collapseThree" class="collapse" data-parent="#accordion">
+			      <div class="card-body">
+			        Lorem ipsum..
+			      </div>
+			    </div>
+			  </div>
+
+			  <div class="card">
+			    <div class="card-header">
+			      <a class="collapsed card-link" data-toggle="collapse" href="#collapseFourth">
+			        	<img src="/assets/icons/notepad.svg" class="icon-info">
+			       			Estado
+			       		<img src="/assets/icons/arrow-down.svg" class="icon-toggle">
+			      </a>
+			    </div>
+			    <div id="collapseFourth" class="collapse" data-parent="#accordion">
+			      <div class="card-body noPadding">
+			        <ul class="list-states">
+			        	<li class="Creada"><div class="circle"></div> Creada</li>
+			        	<li class="Asiganado"><div class="circle"></div> Asiganado</li>
+			        	<li class="Proceso"><div class="circle"></div> Proceso</li>
+			        	<li class="Finalizado"><div class="circle"></div> Finalizado</li>
+			        	<li class="Pausa"><div class="circle"></div> Pausa</li>
+			        	<li class="Archivado"><div class="circle"></div> Archivado</li>
+			        	<li class="Cancelado"><div class="circle"></div> Cancelado</li>
+			        	<li class="Retrasado"><div class="circle"></div> Retrasado</li>
+			        </ul>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+		</aside>
+
+		<article class="col-12 col-sm-8 col-md-9 col-lg-10  col-xl-10 global-tasks">
+			<router-outlet></router-outlet>
+		</article>
+		
+	</section>
+	 
+</div>
+
+
+<!--<app-login></app-login>-->

@@ -1,0 +1,65 @@
+.full-image{
+	background-size:cover;
+	background-position:center;
+	background-repeat: no-repeat;
+}
+
+.login-full-image{ height:95%; background-image:url("/../assets/login-left-img.png");}
+article.login-right-section{ display: flex; justify-content: center; align-items: center; }
+div.section-login{ padding:10px; flex-wrap: wrap; }
+figure.brm-logo{width:100%;text-align: center;margin-bottom: 40px;}
+div.entry-user{
+	background-color: #fff;
+	border:1px solid #c9cfc9; 
+	box-shadow: 0px 2px 5px #afb6af;
+	text-align: center; 
+	border-radius:3px;width:70%; padding:10px; padding-top:50px;
+	font-size:16px; position: relative;
+}
+div.entry-user div.user-img{
+ 	position: absolute; top:-24px;margin-left:auto; margin-right:auto; left:0; right:0;
+}
+div.entry-user button.btn-dark{ 
+	background-color: #002f6c; /*padding: 6px 35px;*/ font-size: 14px; width:75%;
+}
+div.entry-user > p{
+	margin-top: 18px;
+	color: #979998; margin-bottom: 20px;
+}
+
+p.user-forgotten {
+	font-size:12px; color: #979998; margin-top: 20px; }
+p.user-forgotten a{color:#002f6c; font-weight: bold;}
+
+footer.footer-copyRight{
+	background-color: #fff;
+	padding-top:15px; text-align: center;
+	position: absolute;
+	bottom: 0px; width:100%; font-size: 12px; 
+}
+footer.footer-copyRight figure{ width:55%;text-align: right;padding-right: 100px }
+footer.footer-copyRight p{  padding:10px; color:#002f6c;width:30%;}
+
+
+/*MEDIA QUERIES*/
+/*Ocultar textos largos*/
+@media screen and (max-width: 510px) and (min-width: 0px){
+	.to-much-text{display: none !important;}
+}
+/*Cambiar el boton de login para que no se solape el texto*/
+@media screen and (max-width: 1000px) and (min-width: 768px) {
+	div.entry-user button.btn-dark{ font-size:12px;  white-space: normal !important;  width: 80%; }
+	}
+@media screen and (max-width: 768px) {
+	/*banner left (full image)*/
+	.login-full-image{
+		display: none;
+	}
+	.login-right-section{
+		background-image:url("/../assets/login-left-img.png");
+	}
+	/*footer*/
+  footer.footer-copyRight { flex-wrap: wrap !important; }
+  footer.footer-copyRight figure{width:100%;text-align: center;padding-right: 0px;}
+  footer.footer-copyRight p{font-size: 10px;width: 100%;padding:0px;}
+}

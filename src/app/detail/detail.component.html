@@ -1,0 +1,108 @@
+<ul class="breadcrumb">
+	<li class="breadcrumb-item">
+		<a routerLink="/tablero/tasks">Tareas</a></li>
+	<li class="breadcrumb-item active">{{detailTask.proyect}}</li>
+</ul>
+
+	<section id="all-order" >
+		<article class="work-order" >
+			<div class="main">
+				<a class="show-properties">
+					<header class="d-flex header-order-work">
+						<span class="bag-brm left-bag-brm bag-proceso"> 
+								{{detailTask.state}}
+						</span>
+						<h4 class="colorBlue ot-title"> {{detailTask.proyect}} </h4>
+							<div class="ml-auto work-datetime">
+								<span class="bag-brm"> 
+									OT-{{detailTask.id}}
+								</span>
+								<span class="bag-brm">
+									Fecha: {{detailTask.date}}
+								</span>
+							</div>
+					</header>
+				</a>
+
+			<div class="body-work-order">
+				<h5>{{detailTask.title}}</h5>
+				<p> {{detailTask.description}} </p>
+				
+				<ul>
+					<li>
+						<span class="info-text">
+							el tiempo estimado para terminar la tarea es de:
+						</span> <b>{{detailTask.time}}</b>
+					</li>
+					
+					<li>
+						<span class="info-text"> Links asociados: </span>
+							<a  class="asociate-links" target="_blank"  *ngFor="let link of detailTask.links" [href]="link">
+										{{link}}
+							</a>
+					</li>
+				</ul>
+
+				<div class="d-flex user-asing-work-order">
+					<figure class="user-circle"> <img src="" /> </figure>
+						<span class="title">
+							<b class="info-text">Tu</b>,
+							Responsable de esta tarea
+						</span>
+				</div>
+			</div>
+		</div>
+					<footer class="comments-list">
+						<header class="comment-header d-flex">
+							<h5>Comentarios</h5>
+							<div class="ml-auto d-flex">
+								<figure class="user-circle" *ngFor="let comment of detailTask.comments">
+									<img src="" />
+								</figure>
+								<figure class="icon-comment">
+									<img src="/assets/icons/speech-bubble.svg" />
+										<span class="number-comment">
+											{{detailTask.comments.length}}
+										</span>
+								</figure>
+							<button type="button" class="btn btn-outline-secondary">
+								Ver
+							</button>
+							</div>
+						</header>
+
+
+					<!--usualmente la OT tiene estos campos ocultos-->
+						<div class="user-comments">
+							<blockquote class="d-flex blockComment" *ngFor="let comment of detailTask.comments; let ind = index">
+								<figure class="user-circle"> <img src="" /> </figure> 
+								<div class="comment-maked">
+									<span> 
+										<b>{{comment.name_user}}</b> 
+										<span>{{comment.date}}</span>
+									</span>
+									<p>{{comment.comment}}</p>
+								</div>
+							</blockquote>
+						</div>
+
+						<!--
+						<button type="button" class="btn btn-primary btn-block btn-brm-showAll d-flex justify-content-center">
+							Cargar mas comentarios <div class="icon-plus">+</div>
+						</button>
+					-->
+
+						<div class="add-new-comment">
+								<span>Tu </span> - <b>10-08-2018</b>
+							<textarea placeholder="Escribe un comentario"></textarea>
+						</div>
+						<footer class="brm-form-actions d-flex justify-content-end">
+							
+							<button type="button" class="btn btn-dark btn-brm-create">
+								ENVIAR COMENTARIO
+							</button>
+						</footer>
+
+					</footer>
+				</article>
+			</section>
