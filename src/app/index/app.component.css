@@ -420,9 +420,81 @@ li.Retrasado {
 	border:1px solid #ccd;
 	margin-bottom: 25px;
 }
-.work-order div.main{
+
+
+/*::::::::::ADMINISTRADOR GRUPOS,AREAS, PERFILES::::::::*/
+.table-admin{
+	background-color: #fff;
+	border-radius:0px 0px 5px 5px;
+  	border:1px solid #dee2e6;
+  	border-top-color:transparent;
+  	padding-bottom: 30px;
+}
+.table-admin header.registrer-states{margin:20px 0px;}
+.table-admin header.registrer-states h5{ 
+	margin-top:10px;
+	font-weight: 400;
+}
+.table-admin div.main{
+	border-radius:10px;
+	border:1px solid #ccd;
+	margin-bottom: 10px;
+}
+.table-admin div.main .header-order-work{
+	border-color:transparent;
+}
+.bag-counter{
+	border-radius: 50%;
+	width: 70px; height: 70px; 
+	margin-left: 0px; 
+	padding: 0px;
+	text-align: center;
+	line-height: 4.2 ;
+	background-color: rgba(255, 178, 21,0.3);
+    color: #e69900;
+    border-color: #FFB215;
+    text-transform: capitalize;
+}
+.register-information{
+	margin-left:10px;padding:5px 0;
+}
+.register-information h5{
+	margin-bottom:3px;
+}
+.register-information p{
+	padding:0px;margin:0px;font-weight:200;font-size:14px;margin-left:5px;
+}
+.register-information p.date{
+	font-weight:300;font-size:12px;color:#83838a !important;
+}
+.buttons-admin-actions button{
+	background-color:transparent !important;
+	color: transparent !important;
+	border-color: transparent !important;
+	color: #990000 !important; 
+	font-weight: bold;
+	font-size: 18px;
+}
+.buttons-admin-actions{
+	margin-right:-20px;
+	margin-top: -6px;
+} 
+.buttons-actions button img{
+	width: 15px;
+	opacity: 0.5;
+}
+.work-order div.main, .table-admin div.main{
 	padding:0px 22px;
 }
+
+
+/*:::::FIN ADMIN:::::*/
+
+
+
+
+
+
 header.header-order-work {
 	border-bottom:1px solid #ddd;
 	padding:10px 2px;
@@ -466,6 +538,9 @@ span.left-bag-brm{
 .body-work-order{
 	padding:20px 10px;
 	overflow: hidden;
+}
+.body-work-order.content-autocomplete{
+	overflow: initial !important;
 }
 a.show-properties:hover{
 	text-decoration: none !important;
@@ -675,6 +750,19 @@ button.btn-brm-showAll div.icon-plus{
 	color: #ccd; font-weight: 300;
 	background-size: 12px !important;
 }
+.form-group .autocomplete{
+	width:96%;
+	max-height:150px;
+	overflow-x:hidden;
+	overflow-y:auto; 
+	background-color: #fff;
+	margin-left:10px;
+	box-shadow: 0px 5px 5px rgba(0,0,0,0.5);
+	border-radius:0px 0px 5px 5px;
+	position:absolute;z-index:1;padding:5px;
+}
+.form-group .autocomplete .item{ padding:5px 10px; border-bottom: 1px solid #cdd; }
+.form-group .autocomplete .item:last-child{ border-bottom: 1px solid transparent;}
 .form-group input.orderWorkTitle{
 	margin-top: 20px;
 	font-size: 15px;
@@ -694,6 +782,14 @@ button.btn-brm-showAll div.icon-plus{
 .brm-forms .form-group input.link-relacionados{
 	background: #fff url("/assets/icons/web-link.svg") no-repeat right .75rem center;
 }
+.brm-forms .form-group input.user-logo{
+	background: #fff url("/assets/icons/user-shape.svg") no-repeat right .75rem center;
+}
+.brm-forms .form-group input.search-logo{
+	background: #fff url("/assets/icons/search.svg") no-repeat right .75rem center;
+}
+
+
 .brm-forms .form-group input[type="date"]:focus,
 .brm-forms .form-group input[type="number"]:focus,
 .brm-forms .form-group input[type="text"]:focus,

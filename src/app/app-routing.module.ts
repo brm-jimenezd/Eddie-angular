@@ -7,23 +7,37 @@ import { TasksComponent } from './tasks/tasks.component';
 import { CreatasksComponent } from './creatasks/creatasks.component';
 import { DetailComponent } from './detail/detail.component';
 import { EditComponent } from './edit/edit.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+
 //Edición de super admin
 import { AdminEditComponent } from './admin-edit/admin-edit.component';
+import { UsersComponent } from './users/users.component';
+import { MarcasComponent } from './marcas/marcas.component';
+import { ClientesComponent } from './clientes/clientes.component';
+import { PlacejobComponent } from './placejob/placejob.component';
+import { OtsComponent } from './ots/ots.component';
+
 
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'tablero', component: DashboardComponent,
+  { path: 'dashboard', component: DashboardComponent,
   	children:[
   		  { path: 'tasks', component: TasksComponent },
         { path: 'detail/:id', component: DetailComponent },
         { path: 'create', component: CreatasksComponent },
         { path: 'edit/:id', component: EditComponent },
-        { path: 'AdminEdit/:id/:adminId', component: AdminEditComponent }
+        { path: 'AdminEdit/:id/:adminId', component: AdminEditComponent },
+        { path: 'users', component: UsersComponent },
+        { path: 'brands', component: MarcasComponent },
+        { path: 'clients', component: ClientesComponent },
+        { path: 'company', component: PlacejobComponent },
+        { path: 'orders', component: OtsComponent },
+        { path: '**', component: NotFoundComponent }
   	   ]
    },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: '**', redirectTo: '/tablero/task', pathMatch: 'full' }//404 not found add component: PageNotFoundComponent
+  { path: '**', component: NotFoundComponent  }//404 not found add component: PageNotFoundComponent
 ];
 
 @NgModule({

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { RequestService } from '../services/request.service';
 
 @Component({
   selector: 'app-login',
@@ -8,10 +7,10 @@ import { RequestService } from '../services/request.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor( public request: RequestService ) { }
+  constructor( ) { }
 
   ngOnInit() {
-  	this.request.post("post.php", "params");
+  	
   }
 
 }
