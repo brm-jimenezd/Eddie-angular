@@ -323,7 +323,7 @@ section.interface-actions button.btn-light{
 	opacity:0.3;
 }
 .row.customer-row{ 
-	height:100%;
+	min-height:85vh;
 	margin-right: 0px !important;
 }
 
@@ -455,6 +455,8 @@ li.Retrasado {
 	border:1px solid #ccc;
 	padding:0 25px;
 	padding-bottom:20px 0px;
+	overflow-y: auto;
+	height: 85vh;
 }
 .tasks-info{
 	margin-bottom:13px;

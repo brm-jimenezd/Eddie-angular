@@ -17,6 +17,7 @@ import { DetailComponent } from './detail/detail.component';
 import { EditComponent } from './edit/edit.component';
 import { AdminEditComponent } from './admin-edit/admin-edit.component';
 import { UsersComponent } from './users/users.component';
+import { UsersListComponent } from './users/users-list.component';
 import { MarcasComponent } from './marcas/marcas.component';
 import { ClientesComponent } from './clientes/clientes.component';
 import { PlacejobComponent } from './placejob/placejob.component';
@@ -35,6 +36,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     EditComponent,
     AdminEditComponent,
     UsersComponent,
+    UsersListComponent,
     MarcasComponent,
     ClientesComponent,
     PlacejobComponent,

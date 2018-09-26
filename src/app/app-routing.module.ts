@@ -12,6 +12,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 //Edición de super admin
 import { AdminEditComponent } from './admin-edit/admin-edit.component';
 import { UsersComponent } from './users/users.component';
+import { UsersListComponent } from './users/users-list.component';
 import { MarcasComponent } from './marcas/marcas.component';
 import { ClientesComponent } from './clientes/clientes.component';
 import { PlacejobComponent } from './placejob/placejob.component';
@@ -29,6 +30,7 @@ const routes: Routes = [
         { path: 'edit/:id', component: EditComponent },
         { path: 'AdminEdit/:id/:adminId', component: AdminEditComponent },
         { path: 'users', component: UsersComponent },
+        { path: 'users-list', component: UsersListComponent },
         { path: 'brands', component: MarcasComponent },
         { path: 'clients', component: ClientesComponent },
         { path: 'company', component: PlacejobComponent },
