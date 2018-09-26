@@ -173,7 +173,7 @@ export class PlacejobComponent implements OnInit {
   	CRUDgrupos(){
 
   		switch (this._action) {
-  			case "create":
+  			/*case "create":
   				if ( this._grouptName == "" || this._grouptName == undefined || this._groupArea == "" || this._groupArea == undefined ){
   					alert("Los datos no pueden estar vacios");
   				}else{
@@ -187,7 +187,7 @@ export class PlacejobComponent implements OnInit {
   				}
   				
   			
-  			break;
+  			break;*/
 
   			case "update":
   				var nombre  = $("#group-name").val(),
