@@ -47,8 +47,8 @@ export class UsersComponent implements OnInit {
 
   }
 
-  /*Agregar usuario
-
- 
+  CrudUsers(){
+  
+  }
 
 }
