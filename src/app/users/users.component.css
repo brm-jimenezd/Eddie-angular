@@ -1,0 +1,6 @@
+@import url('./../index/app.component.css');
+
+.uber-user, .uber-users{
+	font-size: 2em;
+	margin-right: 5px;
+}

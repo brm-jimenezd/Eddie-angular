@@ -1,0 +1,83 @@
+@font-face {
+  font-family: 'Eddie-font';
+  src:  url('fonts/Eddie-font.eot?mv4h9e');
+  src:  url('fonts/Eddie-font.eot?mv4h9e#iefix') format('embedded-opentype'),
+    url('fonts/Eddie-font.ttf?mv4h9e') format('truetype'),
+    url('fonts/Eddie-font.woff?mv4h9e') format('woff'),
+    url('fonts/Eddie-font.svg?mv4h9e#Eddie-font') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="uber-"], [class*=" uber-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'Eddie-font' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.uber-arrow-down:before {
+  content: "\e900";
+}
+.uber-arrow-left:before {
+  content: "\e901";
+}
+.uber-arrow-rigth:before {
+  content: "\e902";
+}
+.uber-arrow-up:before {
+  content: "\e903";
+}
+.uber-bell:before {
+  content: "\e904";
+}
+.uber-calendar:before {
+  content: "\e905";
+}
+.uber-clock:before {
+  content: "\e906";
+}
+.uber-dialog:before {
+  content: "\e907";
+}
+.uber-filter-fill:before {
+  content: "\e908";
+}
+.uber-filter:before {
+  content: "\e909";
+}
+.uber-link:before {
+  content: "\e90a";
+}
+.uber-pencil:before {
+  content: "\e90b";
+}
+.uber-plus:before {
+  content: "\e90c";
+}
+.uber-search:before {
+  content: "\e90d";
+}
+.uber-star-empty:before {
+  content: "\e90e";
+}
+.uber-table-doc:before {
+  content: "\e90f";
+}
+.uber-trash:before {
+  content: "\e910";
+}
+.uber-user:before {
+  content: "\e911";
+}
+.uber-users:before {
+  content: "\e912";
+}

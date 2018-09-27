@@ -890,7 +890,8 @@ section#all-order footer.brm-form-actions .btn{
 
 thead{
 	border-bottom: solid #002F6C 3px;
-	color: #002F6C;
+	background-color: #002F6C;
+	color: #ccd;
 }
 tbody{
 }
@@ -907,14 +908,14 @@ tbody td#delete ul li{
 }
 tbody td#delete ul a{
 	display: block;
+	color: #495057;
+	transition: ease-out 1s;
 }
-tbody td#delete ul li a:hover img{
+tbody td#delete ul li a:hover{
 	transform: scale(1.2);
+	color: #002F6C;
 }
-tbody td#delete ul li a img{
-	max-width: 15px;
-	transition: ease 1s;
-}
+
 
 
 
