@@ -12,7 +12,7 @@
 			</span>
 				<span class="title ">USUARIOS </span>
 		</h5>
-		<button class="btn btn-dark ml-auto"> <span class="icon">+</span> Nuevo Usuario</button>
+		<a class="btn btn-dark ml-auto" href="dashboard/users"> <span class="icon uber-plus"></span> Nuevo Usuario</a>
 </section>
 <section class="d-flex">
 	<table class="table table-striped">
@@ -27,56 +27,44 @@
 		</thead>
 		
 		<tbody>
-			<tr>
-				<td>Andres David Alvarez Murcia</td>
-				<td>Andres.alvarez</td>
-				<td>andres-alvarez@brm.com.co</td>
-				<td>12/03/2018</td>
+			<tr *ngFor="let usuario of _users; let i = index;">
+				<td>{{usuario.nombre}}</td>
+				<td>{{usuario.usuario}}</td>
+				<td>{{usuario.correo}}</td>
+				<td>{{usuario.fecha}}</td>
 				<td id="delete">
 					<ul>
-						<li><a href=""><span class="uber-pencil icon"></span></a></li>
-						<li><a href=""><span class="uber-trash icon"></span></a></li>
-					</ul>
-				</td>
-			</tr>
-			<tr>
-				<td>Andres David Alvarez Murcia</td>
-				<td>Andres.alvarez</td>
-				<td>andres-alvarez@brm.com.co</td>
-				<td>12/03/2018</td>
-				<td id="delete">
-					<ul>
-						<li><a href=""><span class="uber-pencil icon"></span></a></li>
-						<li><a href=""><span class="uber-trash icon"></span></a></li>
-					</ul>
-				</td>
-			</tr>
-			<tr>
-				<td>Andres David Alvarez Murcia</td>
-				<td>Andres.alvarez</td>
-				<td>andres-alvarez@brm.com.co</td>
-				<td>12/03/2018</td>
-				<td id="delete">
-					<ul>
-						<li><a href=""><span class="uber-pencil icon"></span></a></li>
-						<li><a href=""><span class="uber-trash icon"></span></a></li>
-					</ul>
-				</td>
-			</tr>
-			<tr>
-				<td>Andres David Alvarez Murcia</td>
-				<td>Andres.alvarez</td>
-				<td>andres-alvarez@brm.com.co</td>
-				<td>12/03/2018</td>
-				<td id="delete">
-					<ul>
-						<li><a href=""><span class="uber-pencil icon"></span></a></li>
-						<li><a href=""><span class="uber-trash icon"></span></a></li>
+						<li><a href="dashboard/users/" ><span class="uber-pencil icon"></span></a></li>
+						<li><a href="" data-toggle="modal" data-target="#exampleModal"><span class="uber-trash icon"></span></a></li>
 					</ul>
 				</td>
 			</tr>
 			
+			
 		</tbody>
 		
 	</table>
+
+
 </section>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Advertencia</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-center">
+        ¿Esta seguro de eliminar el usuario del sistema?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-brm-delete-modal">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>

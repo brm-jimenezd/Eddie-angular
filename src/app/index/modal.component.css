@@ -1,0 +1,28 @@
+.modal-content{
+	border:none;
+}
+.modal-header{
+	background-color: #002F6C !important;
+	color: #fff;
+}
+
+.modal-header span{
+	color: #fff;
+	text-shadow: none;
+}
+.modal-footer{
+	justify-content: center;
+}
+
+/******BOTONES********/
+
+.btn-brm-delete-modal{
+	background: transparent !important;
+	color: #dc3545 ;
+	border: solid 1px #dc3545;
+}
+
+.btn-brm-delete-modal:hover{
+
+	background-color: rgba(209,0,0,0.3) !important;
+}

@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 import { RequestService } from './services/request.service';
 
 import { AppComponent } from './index/app.component';
@@ -48,7 +50,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     AppRoutingModule,
     HttpClientModule,
     HttpModule,
-    FormsModule
+    FormsModule,
+    NgbModule.forRoot()
   ],
   providers: [ RequestService ],
   bootstrap: [AppComponent]

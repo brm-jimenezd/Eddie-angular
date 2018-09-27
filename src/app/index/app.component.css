@@ -28,6 +28,10 @@ a:hover{text-decoration: none;}
 .text-blue{
 	color: #002F6C !important;
 }
+
+/*********ICONOS****************/
+
+
 /*MENU SUPERIOR*/
 header.top-main{
 	background-color:#fff;
@@ -852,6 +856,7 @@ section#all-order footer.brm-form-actions .btn{
 .btn-brm-delete{
 	background: transparent !important;
 	color: #dc3545 ;
+	border: solid 1px #dc3545;
 }
 .btn-brm-delete:hover{
 
