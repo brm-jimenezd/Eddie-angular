@@ -14,10 +14,11 @@ export class UsersComponent implements OnInit {
 	_viewActive:string = "ListaUsuarios";
 
 	//New User Form
-	_nombre:string;
+	_nombre:string='';
 	_usuario: string;
 	_correo: any;
 	_fecha: any;
+  _data: any;
 
   constructor( public request: RequestService ) { }
 
@@ -47,8 +48,22 @@ export class UsersComponent implements OnInit {
 
   }
 
-  CrudUsers(){
+  onNameKeyUp(event:any){
+
+    this._nombre = event.target.value;
   
+  }
+
+  postNewUser(){
+    /*let data = {
+      nombre:"Nuevo",
+      usuario:"Nuevo.usuario",
+      correo:"nuevo@correo.com",
+      priv_admin: 1,
+      activo:1,
+    }*/
+
+    
   }
 
 }

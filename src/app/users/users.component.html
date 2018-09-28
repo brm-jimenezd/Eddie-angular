@@ -86,7 +86,7 @@
 						<form action="" class="row brm-forms">
 							<div class="form-group col-sm-12 col-md-6">	
 								<p>Nombre</p>
-								<input type="text" placeholder="Nombre" id="nombre" name="nombre" [(ngModel)]="_nombre">	
+								<input type="text" placeholder="Nombre" id="nombre" name="nombre" (keyup)="onNameKeyUp($event)">	
 							</div>
 							<div class="form-group col-sm-12 col-md-6">	
 								<p>Correo Electrónico</p>
@@ -116,7 +116,7 @@
 			<a class="btn btn-brm-delete" href="dashboard/users-list" data-toggle="modal" data-target="#CancelModal">
 				CANCELAR
 			</a>
-			<button type="button" class="btn btn-dark btn-brm-create" (click)="CrudUsers()">
+			<button type="button" class="btn btn-dark btn-brm-create" (click)="postNewUser()">
 				CREAR
 			</button>
 		</footer>
