@@ -29,7 +29,7 @@ export class OtsComponent implements OnInit {
   	 		this._allOTS    = res.total;
   	 		this._otsCurrentPage = res.current_page;
 
-  	 		console.warn(this._otsCurrentPage):
+  	 		console.warn(this._otsCurrentPage);
 
           if ( this._totalPageOts.length == 0 ){
   		  	 		for (var i = 1; i <= parseInt(res.last_page); i++) {
