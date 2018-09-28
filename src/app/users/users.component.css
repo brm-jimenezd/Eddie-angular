@@ -1,0 +1,8 @@
+@import url('./../index/app.component.css');
+@import url('./../index/modal.component.css');
+
+
+.uber-user, .uber-users{
+	font-size: 1.5em;
+	margin-right: 5px;
+}

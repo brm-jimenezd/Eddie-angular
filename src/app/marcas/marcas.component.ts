@@ -100,7 +100,7 @@ export class MarcasComponent implements OnInit {
 		this._marcasName = "";
 		this._marcasName = "";
 		this._marcasAddress = "";
-		this._marcasPhone = "";
+		this._marcasPhone = 0;
 		this._marcasEmail = "";
 		this._marcasCity = "";
 		this._marcasCliente = "";

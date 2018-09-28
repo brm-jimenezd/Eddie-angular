@@ -459,7 +459,9 @@ li.Retrasado {
 .global-tasks{ 
 	border:1px solid #ccc;
 	padding:0 25px;
-	padding-bottom:20px 0px;
+	padding-bottom:20px;
+	overflow-y: auto;
+	height: 85vh; 
 }
 .tasks-info{
 	margin-bottom:13px;

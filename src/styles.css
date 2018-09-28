@@ -3,6 +3,10 @@ html,body {
 	background-color: #F3F4F5;
     overflow-x:hidden;
 }
+
+body{
+	overflow-y: hidden;
+}
 .btn-brm{
     background-color: #002F6C !important; border-color: #002F6C !important;
     padding: 6px 35px;
@@ -10,3 +14,4 @@ html,body {
 .noPadding{
 	padding:0px !important;
 }
+

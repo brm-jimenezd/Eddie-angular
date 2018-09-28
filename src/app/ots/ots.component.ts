@@ -24,7 +24,7 @@ export class OtsComponent implements OnInit {
 
   getTipeOts(page:number){
   		this.request.get('tiposots?page='+page).subscribe((res)=>{
-  			console.warn(res):
+  			console.warn(res);
   	 		this._tipesOTS  = res.data;
   	 		this._allOTS    = res.total;
   	 		this._otsCurrentPage = res.current_page;

@@ -24,6 +24,9 @@ a:hover{text-decoration: none;}
 	color: #002F6C !important;
 	border-color:#002F6C !important;
 }
+.text-blue{
+	color: #002F6C !important;
+}
 /*MENU SUPERIOR*/
 header.top-main{
 	background-color:#fff;
@@ -383,7 +386,9 @@ li.Retrasado {
 .global-tasks{ 
 	border:1px solid #ccc;
 	padding:0 25px;
-	padding-bottom:20px 0px;
+	padding-bottom:20px;
+	overflow-y: auto;
+	height: 85vh;
 }
 .tasks-info{
 	margin-bottom:13px;
@@ -538,19 +543,24 @@ button.btn-brm-delete:hover{
 .admin-pagination li{
 	border-color: transparent;
 }
-.admin-pagination li:first-child a{
+.admin-pagination li:first-child a, .admin-pagination li:last-child a{
 	background-color: #002F6C !important;
 	border-radius: 50% 0 0 50% !important;
 	color: #fff !important;
 	border-color: #002F6C !important;
 }
 
-.admin-pagination li:last-child a{
-	background-color: #002F6C !important;
-	border-radius: 0 50% 50% 0% !important;
-	color: #fff !important;
-	border-color: #002F6C !important;
+.admin-pagination li:first-child a{
+	border-radius: 50% 0 0 50% !important;
 } 
+
+.admin-pagination li:last-child a{
+	border-radius: 0 50% 50% 0% !important;
+} 
+
+.admin-pagination li:first-child a:hover, .admin-pagination li:last-child a:hover{
+	background-color: darkgrey !important;
+}
 
 .admin-pagination li a{
 	color: #4d4d4d;
@@ -558,17 +568,18 @@ button.btn-brm-delete:hover{
 	border-width: 0px !important;
 	border-radius: 0px !important;
 	border-color: transparent !important;
-	border-bottom: 2px solid #ccd !important;
+	border-bottom: none;
 }
 .admin-pagination li a:hover{
-	background-color: transparent;
+	background-color: darkgrey;
 	color: #002F6C;
-	border-bottom: 2px solid #002F6C !important;
-	background-color: transparent !important
+}
+.admin-pagination li a span{
+	font-size: 0.8em;
 }
 .admin-pagination li.active a{
 	color: #002F6C;
-	border-bottom: 2px solid #002F6C !important;
+	border-bottom: none;
 	background-color: transparent !important
 }
 /*:::::FIN ADMIN:::::*/
@@ -833,6 +844,7 @@ button.btn-brm-showAll div.icon-plus{
 	border-bottom: 1px solid #ccd;
 	color: #ccd; font-weight: 300;
 	background-size: 12px !important;
+	width: 100%;
 }
 .form-group .autocomplete{
 	width:96%;
@@ -859,9 +871,20 @@ button.btn-brm-showAll div.icon-plus{
 	border-bottom-color: #ccd;
 	border-radius: 0px;
 }
-.brm-forms .form-group input[type="text"],
+.brm-forms .form-group p{
+	font-size: 0.8em;
+	color: #002F6C;
+	margin:0;
+}
+.brm-forms .form-group input[type="text"]::placeholder{
+	color: #ccd;
+}
+
 .brm-forms .form-group select{
 	background: #fff url("/assets/icons/arrow-down.svg") no-repeat right .75rem center;
+	padding-top: 0; 
+	padding-bottom: 0;
+	max-height: 24px;
 }
 .brm-forms .form-group input[type="date"]{
 	background: #fff url("/assets/icons/calendar.svg") no-repeat right .75rem center;
@@ -890,6 +913,7 @@ button.btn-brm-showAll div.icon-plus{
 	box-shadow: 0 0 0 0rem rgba(128,189,255,.5) !important;
 	color: #002F6C;
 	font-weight: 400;
+	outline: none;
 }
 .brm-forms .form-group input{
 	border-bottom-color: #ccd;
@@ -913,9 +937,17 @@ section#all-order footer.brm-form-actions .btn{
 .btn-brm-create{
 	background-color: #C3B578; border-color: #C3B578;
 }
+.btn-brm-create:hover{
+	color: #002F6C;
+}
 .btn-brm-delete{
 	background: transparent !important;
 	color: #dc3545 ;
+	border: solid 1px #dc3545;
+}
+.btn-brm-delete:hover{
+
+	background-color: rgba(209,0,0,0.3) !important;
 }
 .btn-brm-add-url{
 	color: #002F6C;
@@ -944,6 +976,35 @@ section#all-order footer.brm-form-actions .btn{
 }
 .brm-forms .type-time:first-child .data-time{
 	border-right:1px solid #ccd;
+}
+/***********Tables Style**************/
+
+thead{
+	border-bottom: solid #002F6C 3px;
+	background-color: #002F6C;
+	color: #ccd;
+}
+tbody{
+}
+tbody td#delete ul{
+	list-style: none;
+	padding: 0;
+	width: 100%;
+}
+tbody td#delete ul li{
+	display: inline-block;
+	float: left;
+	width: 50%;
+	text-align: center;
+}
+tbody td#delete ul a{
+	display: block;
+	color: #495057;
+	transition: ease-out 1s;
+}
+tbody td#delete ul li a:hover{
+	transform: scale(1.2);
+	color: #002F6C;
 }
 
 
