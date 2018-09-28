@@ -1,0 +1,221 @@
+<ul class="breadcrumb">
+	<li class="breadcrumb-item">
+		<a routerLink="/tablero/tasks">Admin</a>
+	</li>
+	<li class="breadcrumb-item active">Odernes De Trabajo</li>
+</ul>
+
+<div class="alert {{_alertClass}}" *ngIf="_alertState" id="company-alert">
+	{{_alertText}}
+</div>
+
+<div class="company-admin-panel" *ngIf="_viewActive == 'panel'">
+	<ul class="nav nav-tabs tabs-admin">
+		  <li class="nav-item">
+		    <a class="nav-link active" data-toggle="tab" href="#TIPOS">
+		    	TIPOS
+		    </a>
+		  </li>
+		  <li class="nav-item" (click)="loadDate('areas')">
+		    <a class="nav-link" data-toggle="tab" href="#ESTADOS">
+		    	ESTADOS
+		    </a>
+		  </li>
+	</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+  <div class="tab-pane container active table-admin" id="GRUPOS">
+		<header class="d-flex registrer-states" *ngIf="_tipesOTS != undefined">
+		  	<h5>Registros: {{_allOTS}}</h5>
+		  	<button  class="btn btn-dark ml-auto" type="button" (click)="goTo('group', 'create')">
+		  		<span class="icon">+</span> Añadir
+		  	</button>
+		</header>
+
+		<div class="loading company-loading" *ngIf="_tipesOTS == undefined">Cargando...</div>
+
+		<div class="main" *ngFor="let tipes of _tipesOTS; let i = index;" id="row-tipes-ots-{{tipes.id}}">
+			<header class="header-order-work d-flex">
+				<span class="bag-brm bag-counter"> {{i+1}} </span>
+					<div class="register-information">
+						<h5 class="colorBlue"> {{tipes.tipo}} </h5>
+							<p class="date"> 
+								<b>Fecha:</b> {{tipes.fecha}}
+							</p>
+							<p>
+								<b>GRUPO:</b> {{tipes.grupo.nombre}}
+							</p>
+					</div>
+					<div class="buttons-admin-actions ml-auto">
+						<button type="button" class="btn btn-primary btn-brm-edit" (click)="goToEdit(tipes,'group','update')">
+							<i class="fas fa-pencil-alt"></i>
+						</button>
+						<button type="button" class="btn btn-primary btn-brm-delete" (click)="delete(tipes.id, 'grupos')">
+							<i class="fas fa-trash"></i>
+						</button>
+					</div>
+			</header>
+		</div>
+		<ul class="pagination pagination-lg justify-content-center admin-pagination" *ngIf="_tipesOTS != undefined">
+			  <li class="page-item">
+			  	<a class="page-link" href="#">
+			  		<i class="fas fa-angle-left"></i>
+			  	</a>
+			 </li>
+			  
+			  <li class="page-item active" 
+			  		*ngFor="let pages of _totalPageOts"
+			  		(click)="getTipeOts(pages)"
+			  		[class.active]="_otsCurrentPage == pages">
+			  			<a class="page-link">{{pages}}</a>
+			  </li>	
+
+			<li class="page-item">
+				<a class="page-link" href="#">
+					<i class="fas fa-angle-right"></i>
+				</a>
+			</li>
+		</ul>
+  </div>
+
+  <div class="tab-pane container fade table-admin" id="AREAS">
+	  	<header class="d-flex registrer-states" *ngIf="_areas != undefined">
+			  	<h5>Registros: {{_totalAreas}}</h5>
+			  	<button  class="btn btn-dark ml-auto" type="button" (click)="goTo('area', 'create')">
+			  		<span class="icon">+</span> Añadir
+			  	</button>
+		</header>
+
+		<div class="loading company-loading" *ngIf="_areas == undefined">Cargando...</div>
+
+		<div class="main" *ngFor="let area of _areas; let i = index;" id="row-areas-{{area.id}}">
+				<header class="header-order-work d-flex">
+					<span class="bag-brm bag-counter">  {{i+1}} </span>
+						<div class="register-information">
+							<h5 class="colorBlue"> {{area.nombre}} </h5>
+								<p class="date"> 
+									<b>Fecha:</b> {{area.fecha}}
+								</p>
+								<p>
+									<b>Jefe:</b> {{area.usuario_jefe?.nombre}}
+									<span *ngIf="!area.usuario_jefe?.nombre">Sin jefe</span>
+								</p>
+						</div>
+				<div class="buttons-admin-actions ml-auto">
+					<button type="button" class="btn btn-primary btn-brm-edit" (click)="goToEdit(area,'area','update')">
+						<i class="fas fa-pencil-alt"></i>
+					</button>
+					<button type="button" class="btn btn-primary btn-brm-delete" (click)="delete(area.id, 'areas')">
+							<i class="fas fa-trash"></i>
+					</button>
+				</div>
+			</header>
+		</div>
+		<ul class="pagination pagination-lg justify-content-center admin-pagination" *ngIf="_areas != undefined">
+			<li class="page-item">
+			  	<a class="page-link" href="#">
+			  		<i class="fas fa-angle-left"></i>
+			  	</a>
+			 </li>
+			  <li class="page-item active"
+			  	  *ngFor="let pagesAr of _totalPageAreas"
+			  	  (click)="getAreas(pagesAr)"
+			  	  [class.active]="_currentPageAreas == pagesAr">
+				  	<a class="page-link">
+				  		{{pagesAr}}
+				  	</a>
+			  </li>	
+
+			  <li class="page-item">
+				<a class="page-link" href="#">
+					<i class="fas fa-angle-right"></i>
+				</a>
+			</li>
+
+		</ul>
+  </div>
+</div>
+</div>
+
+
+			<section class="tasks-info d-flex ">
+				<h6>
+					<span class="title colorBlue">OPCIONES NUEVA OT: </span>
+				</h6>
+			</section>
+
+			<section id="all-order">
+				<article class="work-order">
+					<div class="main">
+						<header class="d-flex header-order-work">
+							<span class="bag-brm left-bag-brm bag-proceso"> Nuevo Estado </span>
+								<div class="ml-auto work-datetime">
+									<span class="bag-brm"> Ver estados </span>
+								</div>
+						</header>
+
+						<div class="body-work-order">
+						<p>Todos los campos marcados so obligatorios * </p>
+						<form action="/action_page.php" class="row brm-forms">
+							<div class="form-group col-sm-12 col-md-9">
+								<input type="text" class="form-control orderWorkTitle" id="pwd" placeholder="* Escribe el título">
+							</div>
+
+						   <div class="form-group col-sm-12 col-md-3">
+								<input type="text" class="form-control orderWorkTitle" id="pwd" placeholder="Color">
+							</div>
+						</form>
+
+						</div>
+					</div>
+				</article>
+
+				<footer class="brm-form-actions d-flex justify-content-end">
+					<button type="button" class="btn btn-dark btn-brm-create">
+						CREAR ESTADO
+					</button>
+				</footer>
+			</section>
+
+			<section class="tasks-info d-flex ">
+				<h6>
+					<span class="title colorBlue">OPCIONES NUEVO TIPO OT: </span>
+				</h6>
+			</section>
+
+			<section id="all-order">
+				<article class="work-order">
+					<div class="main">
+						<header class="d-flex header-order-work">
+							<span class="bag-brm left-bag-brm bag-proceso"> Nuevo Tipo OT </span>
+								<div class="ml-auto work-datetime">
+									<span class="bag-brm"> Ver Tipos OT </span>
+								</div>
+						</header>
+
+						<div class="body-work-order">
+						<p>Todos los campos marcados so obligatorios * </p>
+						<form action="/action_page.php" class="row brm-forms">
+							<div class="form-group col-sm-12 col-md-6">
+								<input type="text" class="form-control orderWorkTitle" id="pwd" placeholder="* Escribe el título">
+							</div>
+
+						   <div class="form-group col-sm-12 col-md-6">
+								<input type="text" class="form-control orderWorkTitle" id="pwd" placeholder="Color">
+							</div>
+						</form>
+
+						</div>
+					</div>
+				</article>
+
+				<footer class="brm-form-actions d-flex justify-content-end">
+					<button type="button" class="btn btn-dark btn-brm-create">
+						CREAR TIPO OT
+					</button>
+				</footer>
+			</section>
+
+
+

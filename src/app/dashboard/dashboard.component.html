@@ -31,7 +31,7 @@
 			          OT'S
 			        </a>
 				        <div class="dropdown-menu drop-down-ots" aria-labelledby="navbarDropdown">
-				          <a class="dropdown-item" routerLink="/tablero/tasks">
+				          <a class="dropdown-item" routerLink="/{{_pageName}}/tasks">
 				          	Lista de Tareas
 				          </a>
 				          <a class="dropdown-item" href="login">
@@ -117,23 +117,86 @@
 		  				ver todo
 		  			</footer>
 	  	</section>
-	  	<div class="user-info" >
+
+	  	<div class="user-info">
 	  		<figure class="user-image">
 	  			 <img src="" class="">
 	  		</figure>
 	  		<span class="user-name">Melisa Benavidez</span>
 	  	</div>
+
+
 	  </div>
 	</header>
 <div id="mobil-notifications"> </div>
 
 	<section class="interface-actions d-flex">
 		<h6 style="margin:0px;">Listado OT'S Creadas <span>25</span></h6>
+	
 		<a routerLink="create" class="ml-auto">
 			<button type="button" class="btn btn-dark btn-brm ">
 				<span class="icon">+</span> Crear nueva OT
 			</button>
 		</a>
+
+			<button type="button" class="btn btn-light " style="position:relative;color:#666;" *ngIf="showAdminPanel" (click)="adminPanel()">
+				<span class="icon"> <i class="fas fa-cogs"></i> </span>
+
+	<section class="admin-actions" [class.active]="_panelstate">
+	  		<div class="tool-tip-notifi"></div>
+	  		<header class="notifi-title">
+	  			Administrador
+	  		</header>
+	  		<article>
+	  			<ul>
+	  				<li (click)="selectedItem($event)"> 
+	  					<a class="d-flex" routerLink="/{{_pageName}}/users">
+		  						<img src="/assets/icons/star.svg" class="brm-icon">
+		  					<span> Usuarios</span>
+		  					<button type="button" class="btn btn-dark">+</button>
+	  					</a>
+	  				</li>
+	  				<li (click)="selectedItem($event)"> 
+	  					<a routerLink="/{{_pageName}}/company" class="d-flex"> 
+		  						<img src="/assets/icons/star.svg" class="brm-icon">
+		  					<span> Compañia </span>
+		  					<button type="button" class="btn btn-dark">+</button>
+		  				</a>
+	  				</li>
+	  				<li (click)="selectedItem($event)">
+	  					<a routerLink="/{{_pageName}}/clients" class="d-flex">  
+		  						<img src="/assets/icons/star.svg" class="brm-icon">
+		  					<span> Clientes</span>
+		  					<button type="button" class="btn btn-dark">+</button>
+		  				</a>
+	  				</li>
+	  				<li (click)="selectedItem($event)">
+	  					<a routerLink="/{{_pageName}}/brands" class="d-flex">  
+		  						<img src="/assets/icons/star.svg" class="brm-icon">
+		  					<span> Marcas</span>
+		  					<button type="button" class="btn btn-dark">+</button>
+		  				</a>
+	  				</li>
+	  				<li (click)="selectedItem($event)"> 
+	  					<a routerLink="/{{_pageName}}/" class="d-flex">  
+		  						<img src="/assets/icons/star.svg" class="brm-icon">
+		  					<span> Ciudades </span>
+		  					<button type="button" class="btn btn-dark">+</button>
+		  				</a>
+	  				</li>
+	  				<li (click)="selectedItem($event)"> 
+	  					<a routerLink="/{{_pageName}}/orders" class="d-flex"> 
+		  						<img src="/assets/icons/star.svg" class="brm-icon">
+		  					<span> Ordenes de trabajo </span>
+		  					<button type="button" class="btn btn-dark">+</button>
+		  				</a>
+	  				</li>
+	  			</ul>	
+	  		</article>
+		  		
+	 </section>
+			</button>
+
 	</section>
 
 <section class="row customer-row">
@@ -157,8 +220,11 @@
 
 
 			<div id="accordion" class="lateral-left-filter">
+				<!--
+					
+				-->
 			  <div class="card">
-			    <div class="card-header ">
+			    <div class="card-header">
 			      <a class="card-link" data-toggle="collapse" href="#collapseOne">
 			       	<img src="/assets/icons/star.svg" class="icon-info">
 			       		Marca
@@ -171,7 +237,6 @@
 			        Lorem ipsum..
 			      </div>
 			    </div>
-
 			  </div>
 
 			  <div class="card">

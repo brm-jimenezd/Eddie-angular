@@ -5,8 +5,9 @@ import { LIST } from '../models/task-lists';
 @Component({
   selector: 'app-tasks',
   templateUrl: './tasks.component.html',
-  styleUrls: ['./../index/app.component.css']
+  styleUrls: ['./../index/app.component.css']//'./../index/app.component.css' tasks
 })
+
 export class TasksComponent implements OnInit {
 	tarea =  LIST;
 

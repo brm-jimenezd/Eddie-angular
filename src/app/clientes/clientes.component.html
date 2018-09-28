@@ -1,0 +1,133 @@
+	<ul class="breadcrumb">
+		<li class="breadcrumb-item">
+			<a routerLink="/tablero/tasks"> Admin </a>
+		</li>
+		<li class="breadcrumb-item">
+			<a routerLink="/tablero/tasks"> Clientes </a>
+		</li>
+		<li class="breadcrumb-item active"> Añadir </li>
+	</ul>
+
+<div class="alert {{_alertClass}}" *ngIf="_alertState" id="company-alert">
+	{{_alertText}}
+</div>
+
+<div class="tab-content" *ngIf="_viewActive == 'panel'">
+  <div class="tab-pane container active table-admin">
+		<header class="d-flex registrer-states" *ngIf="_clientes != undefined">
+		  	<h5>Registros: {{_totalClientes}}</h5>
+		  	<button  class="btn btn-dark ml-auto" type="button" (click)="go('form', 'create')">
+		  		<span class="icon">+</span> Añadir
+		  	</button>
+		</header>
+
+		<div class="loading company-loading" *ngIf="_clientes == undefined">Cargando...</div>
+
+		<div class="main" *ngFor="let clientes of _clientes; let i = index;" id="row-group-{{clientes.id}}" >
+			<header class="header-order-work d-flex">
+				<span class="bag-brm bag-counter"> {{i+1}} </span>
+					<div class="register-information">
+						<h5 class="colorBlue"> {{clientes.nombre}} </h5>
+							<p class="date"> 
+								<b>Fecha:</b> {{clientes.fecha}} 
+							</p>
+							<p>
+								<b>Email:</b> {{clientes.correo}} / <b>Télefono:</b> {{clientes.telefono}}
+							</p>
+							<p>
+								<b>Ciudad:</b> {{clientes.ciudad?.nombre}} / <b>Dirección:</b> {{clientes.direccion}}
+							</p>
+							
+					</div>
+					<div class="buttons-admin-actions ml-auto">
+						<button type="button" class="btn btn-primary btn-brm-edit" (click)="go('form', 'edit', clientes)">
+							<i class="fas fa-pencil-alt"></i>
+						</button>
+						<button type="button" class="btn btn-primary btn-brm-delete" (click)="delete(clientes.id)">
+							<i class="fas fa-trash"></i>
+						</button>
+					</div>
+			</header>
+		</div>
+		<ul class="pagination pagination-lg justify-content-center admin-pagination" *ngIf="_clientes != undefined">
+			  <li class="page-item">
+			  	<a class="page-link" href="#">
+			  		<i class="fas fa-angle-left"></i>
+			  	</a>
+			 </li>
+			  
+			  <li class="page-item active" 
+			  		*ngFor="let pages of _totalPage"
+			  		(click)="getClientes(pages)"
+			  		[class.active]="_currentPage == pages">
+			  			<a class="page-link">{{pages}}</a>
+			  </li>	
+
+			<li class="page-item">
+				<a class="page-link" href="#">
+					<i class="fas fa-angle-right"></i>
+				</a>
+			</li>
+		</ul>
+  </div>
+</div>
+
+
+	<section id="all-order" *ngIf="_viewActive  == 'form'">
+		<article class="work-order">
+			<div class="main">
+				<header class="d-flex header-order-work">
+					<span class="bag-brm left-bag-brm bag-proceso"> Nuevo Cliente </span>
+				</header>
+				<div class="body-work-order">
+					<p>Todos los campos marcados so obligatorios * </p>
+						<div action="/action_page.php" class="row brm-forms">
+							<div class="form-group col-sm-12">
+								<input type="hidden" class="form-control" id="client-identy" [(ngModel)]="_indety">
+								<input type="text" class="form-control orderWorkTitle" id="client-name" placeholder="Ingresa un título"  [(ngModel)]="_name">
+							</div>
+
+						    <div class="form-group col-sm-12 col-md-6">
+							    <input type="text" class="form-control orderWorkTitle" 
+							    		id="pwd" 
+							    		placeholder="Ingresa una Dirección" 
+							    		[(ngModel)]="_address">
+							</div>
+
+							<div class="form-group col-sm-12 col-md-6">
+								<input type="tel" class="form-control orderWorkTitle" id="client-phone" placeholder="Ingresa un Teléfono" [(ngModel)]="_phone" >
+							</div>
+
+						    <div class="form-group col-sm-12 col-md-6">
+							    <input type="email" class="form-control orderWorkTitle" id="client-email" placeholder="Ingresa un Email"  [(ngModel)]="_email">
+							</div>
+
+							<div class="form-group col-sm-12 col-md-6">
+									<select class="custom-select mb-3 orderWorkTitle"  id="client-city" [(ngModel)]="_city">
+									    <option selected value="init">* Area</option>
+									    <option *ngFor="let ciudad of _ciudades"  [value]="ciudad.id">
+									    			{{ciudad.nombre}}
+									    </option>
+									</select>
+
+								<!--<input type="email" class="form-control orderWorkTitle" id="pwd" placeholder="Ciudad"  [(ngModel)]="_city">-->
+							</div>
+						</div>
+				</div>
+			</div>
+		</article>
+
+
+		<section id="all-order">
+			
+
+			<footer class="brm-form-actions d-flex justify-content-end">
+				<button class="btn btn-danger btn-brm-delete" type="button" (click)="go('panel')">
+					CANCELAR
+				</button>
+				<button type="button" class="btn btn-dark btn-brm-create" (click)="save()">
+					GUARDAR
+				</button>
+			</footer>
+		</section>
+	</section>

@@ -1,0 +1,369 @@
+<ul class="breadcrumb">
+	<li class="breadcrumb-item">
+		<a routerLink="">Admin</a>
+	</li>
+	<li class="breadcrumb-item active" (click)="goTo('panel')">
+		<a>Compañia</a>
+	</li>
+	<li class="breadcrumb-item active">{{_viewActive}}</li>
+</ul>
+
+<div class="alert {{_alertClass}}" *ngIf="_alertState" id="company-alert">
+	{{_alertText}}
+</div>
+
+<div class="company-admin-panel" *ngIf="_viewActive == 'panel'">
+	<ul class="nav nav-tabs tabs-admin">
+		  <li class="nav-item">
+		    <a class="nav-link active" data-toggle="tab" href="#GRUPOS">
+		    	GRUPOS
+		    </a>
+		  </li>
+		  <li class="nav-item" (click)="loadDate('areas')">
+		    <a class="nav-link" data-toggle="tab" href="#AREAS">
+		    	AREAS
+		    </a>
+		  </li>
+		  <li class="nav-item" (click)="loadDate('perfiles')">
+		    <a class="nav-link" data-toggle="tab" href="#PERFILES">
+		    	PERFILES
+		    </a>
+		  </li>
+	</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+  <div class="tab-pane container active table-admin" id="GRUPOS">
+		<header class="d-flex registrer-states" *ngIf="_grupos != undefined">
+		  	<h5>Registros: {{_totalGrupos}}</h5>
+		  	<button  class="btn btn-dark ml-auto" type="button" (click)="goTo('group', 'create')">
+		  		<span class="icon">+</span> Añadir
+		  	</button>
+		</header>
+
+		<div class="loading company-loading" *ngIf="_grupos == undefined">Cargando...</div>
+
+		<div class="main" *ngFor="let grupo of _grupos; let i = index;" id="row-group-{{grupo.id}}">
+			<header class="header-order-work d-flex">
+				<span class="bag-brm bag-counter"> {{i+1}} </span>
+					<div class="register-information">
+						<h5 class="colorBlue"> {{grupo.nombre}} </h5>
+							<p class="date"> 
+								<b>Fecha:</b> {{grupo.fecha}}
+							</p>
+							<p>
+								<b>Area:</b> {{grupo.area.nombre}}
+							</p>
+					</div>
+					<div class="buttons-admin-actions ml-auto">
+						<button type="button" class="btn btn-primary btn-brm-edit" (click)="goToEdit(grupo,'group','update')">
+							<i class="fas fa-pencil-alt"></i>
+						</button>
+						<button type="button" class="btn btn-primary btn-brm-delete" (click)="delete(grupo.id, 'grupos')">
+							<i class="fas fa-trash"></i>
+						</button>
+					</div>
+			</header>
+		</div>
+		<ul class="pagination pagination-lg justify-content-center admin-pagination" *ngIf="_grupos != undefined">
+			  <li class="page-item">
+			  	<a class="page-link" href="#">
+			  		<i class="fas fa-angle-left"></i>
+			  	</a>
+			 </li>
+			  
+			  <li class="page-item active" 
+			  		*ngFor="let pages of _totalPage"
+			  		(click)="getGrupos(pages)"
+			  		[class.active]="_currentPage == pages">
+			  			<a class="page-link">{{pages}}</a>
+			  </li>	
+
+			<li class="page-item">
+				<a class="page-link" href="#">
+					<i class="fas fa-angle-right"></i>
+				</a>
+			</li>
+		</ul>
+  </div>
+
+  <div class="tab-pane container fade table-admin" id="AREAS">
+	  	<header class="d-flex registrer-states" *ngIf="_areas != undefined">
+			  	<h5>Registros: {{_totalAreas}}</h5>
+			  	<button  class="btn btn-dark ml-auto" type="button" (click)="goTo('area', 'create')">
+			  		<span class="icon">+</span> Añadir
+			  	</button>
+		</header>
+
+		<div class="loading company-loading" *ngIf="_areas == undefined">Cargando...</div>
+
+		<div class="main" *ngFor="let area of _areas; let i = index;" id="row-areas-{{area.id}}">
+				<header class="header-order-work d-flex">
+					<span class="bag-brm bag-counter">  {{i+1}} </span>
+						<div class="register-information">
+							<h5 class="colorBlue"> {{area.nombre}} </h5>
+								<p class="date"> 
+									<b>Fecha:</b> {{area.fecha}}
+								</p>
+								<p>
+									<b>Jefe:</b> {{area.usuario_jefe?.nombre}}
+									<span *ngIf="!area.usuario_jefe?.nombre">Sin jefe</span>
+								</p>
+						</div>
+				<div class="buttons-admin-actions ml-auto">
+					<button type="button" class="btn btn-primary btn-brm-edit" (click)="goToEdit(area,'area','update')">
+						<i class="fas fa-pencil-alt"></i>
+					</button>
+					<button type="button" class="btn btn-primary btn-brm-delete" (click)="delete(area.id, 'areas')">
+							<i class="fas fa-trash"></i>
+					</button>
+				</div>
+			</header>
+		</div>
+		<ul class="pagination pagination-lg justify-content-center admin-pagination" *ngIf="_areas != undefined">
+			<li class="page-item">
+			  	<a class="page-link" href="#">
+			  		<i class="fas fa-angle-left"></i>
+			  	</a>
+			 </li>
+			  <li class="page-item active"
+			  	  *ngFor="let pagesAr of _totalPageAreas"
+			  	  (click)="getAreas(pagesAr)"
+			  	  [class.active]="_currentPageAreas == pagesAr">
+				  	<a class="page-link">
+				  		{{pagesAr}}
+				  	</a>
+			  </li>	
+
+			  <li class="page-item">
+				<a class="page-link" href="#">
+					<i class="fas fa-angle-right"></i>
+				</a>
+			</li>
+
+		</ul>
+  </div>
+
+
+
+  <div class="tab-pane container fade table-admin" id="PERFILES">
+  		<header class="d-flex registrer-states">
+			  	<h5>Registros: {{_totalPerfiles}}</h5>
+			  	<button  class="btn btn-dark ml-auto" type="button" (click)="goTo('perfil', 'create')">
+			  		<span class="icon">+</span> Añadir
+			  	</button>
+		</header>
+
+		<div class="loading company-loading" *ngIf="_perfiles == undefined">Cargando...</div>
+
+			<div class="main" *ngFor="let perfiles of _perfiles ;let i = index;" id="row-perfiles-{{perfiles.id}}">
+				<header class="header-order-work d-flex">
+					<span class="bag-brm bag-counter">  {{i+1}} </span>
+						<div class="register-information">
+							<h5 class="colorBlue"> {{perfiles.nombre}} </h5>
+								<p class="date"> 
+									<b>Fecha:</b> {{perfiles.fecha}}
+								</p>
+								<p>
+									<b>Grupo:</b> {{perfiles.grupo?.nombre}}
+									<span *ngIf="!perfiles.grupo?.nombre">Sin Grupo</span>
+								</p>
+						</div>
+						<div class="buttons-admin-actions ml-auto">
+							<button type="button" class="btn btn-primary btn-brm-edit" (click)="goToEdit( perfiles,'perfil','update' )">
+								<i class="fas fa-pencil-alt"></i>
+							</button>
+							<button type="button" class="btn btn-primary btn-brm-delete" (click)="delete( perfiles.id, 'perfiles' )">
+									<i class="fas fa-trash"></i>
+							</button>
+						</div>
+				</header>
+			</div>
+			<ul class="pagination pagination-lg justify-content-center admin-pagination">
+				<li class="page-item">
+			  		<a class="page-link" href="#">
+			  			<i class="fas fa-angle-left"></i>
+			  		</a>
+				 </li>
+
+			   <li class="page-item active" *ngFor="let perfiles of _totalPageAPerfiles" (click)="getPerfiles(perfiles)" [class.active]="_currentPagePerfiles == perfiles">
+			  	<a class="page-link">{{perfiles}}</a>
+			  </li>	
+
+				<li class="page-item">
+					<a class="page-link" href="#">
+						<i class="fas fa-angle-right"></i>
+					</a>
+				</li>
+
+		</ul>
+  </div>
+</div>
+</div>
+
+
+<!--Crear nuevo grupo-->
+<div id="form-group" *ngIf="_viewActive == 'group'">
+	<section class="tasks-info d-flex" >
+		<h6>  <span class="title colorBlue">REQUERIMIENTOS GRUPO: </span> </h6>
+	</section>
+
+	<section id="all-order">
+		<article class="work-order">
+			<div class="main">
+				<header class="d-flex header-order-work">
+					<span class="bag-brm left-bag-brm bag-proceso"> Nuevo Grupo </span>
+				</header>
+
+				<div class="body-work-order content-autocomplete">
+						<p>Todos los campos marcados son obligatorios * </p>
+					<form action="/action_page.php" class="row brm-forms">
+						<div class="form-group col-sm-12 col-md-8">
+							<input type="hidden" class="form-control user-logo" name="group-id" id="group-id" placeholder="* Agregar un Nombre">
+							<input type="text" class="form-control user-logo" name="group-name" [(ngModel)]="_grouptName" id="group-name" placeholder="* Agregar un Nombre">
+						</div>
+
+						<div class="form-group col-sm-12 col-md-4">
+								<select class="custom-select mb-3" id="group-area" name="group-area" [(ngModel)]="_groupArea">
+								    <option selected value="init">* Area</option>
+								    <option *ngFor="let area of _areas" value="{{area.id}}">
+								    	{{area.nombre}}
+								    </option>
+								</select>
+						</div>
+					</form>
+				</div>
+			</div>
+		</article>
+
+		<footer class="brm-form-actions d-flex justify-content-end">
+			<button class="btn btn-danger btn-brm-delete" type="button" (click)="goTo('panel')">
+				CANCELAR
+			</button>
+			<button type="button" class="btn btn-dark btn-brm-create" (click)="CRUDgrupos()">
+				CREAR GRUPO
+			</button>
+		</footer>
+	</section>
+
+
+</div>
+<!--Crear nuevo grupo-->
+
+
+
+
+<!--CREAR NUEVA AREA-->
+<div id="form-group" *ngIf="_viewActive == 'area'">
+	<section class="tasks-info d-flex" *ngIf="true">
+		<h6>  <span class="title colorBlue">REQUERIMIENTOS AREA: </span> </h6>
+	</section>
+
+	<section id="all-order">
+		<article class="work-order">
+			<div class="main">
+				<header class="d-flex header-order-work">
+					<span class="bag-brm left-bag-brm bag-proceso"> Nueva Area </span>
+				</header>
+
+				<div class="body-work-order">
+						<p>Todos los campos marcados son obligatorios * </p>
+						<form action="/action_page.php" class="row brm-forms">
+							<div class="form-group col-sm-12">
+								<input type="hidden" class="form-control user-logo" id="areas-id">
+								<input type="text" class="form-control user-logo" id="areas-name" placeholder="* Agregar un Nombre">
+							</div>
+
+						    <div class="form-group col-sm-12 col-md-4">
+							    	<select class="custom-select mb-3" id="areas-city">
+								    	<option selected value="init">* Agregar una ciudad</option>
+									    <option 
+									    	*ngFor="let ciudad of _cities" 
+									    	[value]="ciudad.id">
+									    	{{ciudad.nombre}}
+									    </option>
+								  </select>
+							</div>
+
+							<div class="form-group col-sm-12 col-md-8">
+										<select class="custom-select mb-3" id="area-jefe">
+										    	<option selected value="init">* Agregar un jefe</option>
+											    <option 
+											    	*ngFor="let usuario of _usuarios" 
+											    	[value]="usuario.id">
+											    	{{usuario?.nombre}}
+											    </option>
+										  </select>
+									<!--
+									<input type="text" class="form-control user-logo" id="area-jefe" placeholder="* Agregar un jefe" data-id="1" (input)="searchUser($event.target.value)">
+									<div class="autocomplete">
+										<div class="item" *ngFor="let usuario of _usuarios" data-ident="usuario.id">
+											{{usuario?.nombre}}
+										</div>
+									</div>
+								-->
+							</div>
+						</form>
+				</div>
+			</div>
+		</article>
+
+		<footer class="brm-form-actions d-flex justify-content-end">
+			<button class="btn btn-danger btn-brm-delete" type="button" (click)="goTo('panel')">
+				CANCELAR
+			</button>
+			<button type="button" class="btn btn-dark btn-brm-create" (click)="CRUDareas()">
+				CREAR AREA
+			</button>
+		</footer>
+	</section>
+</div>
+<!--CREAR NUEVA AREA-->
+
+
+<!--CREAR NUEVO PERFIL-->
+<div id="form-group" *ngIf="_viewActive == 'perfil'">
+	<section class="tasks-info d-flex">
+		<h6>  <span class="title colorBlue">REQUERIMIENTOS PERFIL: </span> </h6>
+	</section>
+
+	<section id="all-order">
+		<article class="work-order">
+			<div class="main">
+				<header class="d-flex header-order-work">
+					<span class="bag-brm left-bag-brm bag-proceso"> Nuevo perfil </span>
+				</header>
+
+				<div class="body-work-order content-autocomplete">
+						<p>Todos los campos marcados son obligatorios * </p>
+						<form action="/action_page.php" class="row brm-forms">
+							<div class="form-group col-sm-12 col-md-6">
+								<input type="hidden" class="form-control user-logo" id="perfiles-id">
+								<input type="text" class="form-control user-logo" id="perfiles-names" placeholder="* Agregar un Nombre">
+							</div>
+
+							<div class="form-group col-sm-12 col-md-6">
+								<select class="custom-select mb-3" id="perfiles-grupos">
+								    	<option selected value="init">Grupo</option>
+									    <option 
+									    	*ngFor="let grupos of _grupos" 
+									    	[value]="grupos.id">
+									    	{{grupos.nombre}}
+									    </option>
+								</select>
+							</div>
+						</form>
+				</div>
+			</div>
+		</article>
+
+		<footer class="brm-form-actions d-flex justify-content-end">
+			<button class="btn btn-danger btn-brm-delete" type="button" (click)="goTo('panel')">
+				CANCELAR
+			</button>
+			<button type="button" class="btn btn-dark btn-brm-create" (click)="CRUDperfiles()">
+				GUARDAR
+			</button>
+		</footer>
+	</section>
+</div>

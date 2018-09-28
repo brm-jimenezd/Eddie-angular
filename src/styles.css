@@ -1,1 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
+html,body {
+	height: 100%;
+	background-color: #F3F4F5;
+    overflow-x:hidden;
+}
+.btn-brm{
+    background-color: #002F6C !important; border-color: #002F6C !important;
+    padding: 6px 35px;
+}
+.noPadding{
+	padding:0px !important;
+}

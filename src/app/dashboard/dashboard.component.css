@@ -105,6 +105,85 @@ a.dropdown-toggle::after{
 	position: relative;
 }
 
+section.admin-actions{
+	border:1px solid #E3E4E8;
+	position: absolute;
+	top: 55px;
+	right: -10px;
+	width: 230px;
+	z-index: 1;
+	background-color: #fff;
+	box-shadow: 0px 3px 5px rgba(0,0,0,0.5);
+	border-radius: 0px;
+	display: none;
+}
+.table-admin .loading{
+	padding:10px; padding-left:25px;
+	background-color: #00cc66;
+	color: #fff;
+}
+section.admin-actions.active{
+	display: block !important;
+	animation-name: example;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;/*conservar estado final de la animación*/
+}
+
+@keyframes example {
+    from {right: -160px;opacity:0;}
+    to { right: 0px;opacity:1;}
+}
+
+
+section.admin-actions header.notifi-title{
+	border-radius: 0px !important; 
+}
+section.admin-actions ul{
+	padding:0px 5px;
+	margin: 0px;
+	list-style: none;
+}
+section.admin-actions ul li{
+	border-bottom: 1px solid #ccd;	
+}
+section.admin-actions ul li:hover{
+	background-color: #f2f2f2;
+}
+section.admin-actions ul li.active{
+	background-color: #f2f2f2 !important;
+}
+
+section.admin-actions ul li:last-child{
+	border-color: transparent !important;
+}
+section.admin-actions ul li .brm-icon{
+	margin-top: 13px; margin-left: 10px;
+	color:red; width: 20px; height: 20px;
+	opacity: 0.5;
+}
+section.admin-actions a:hover{
+	text-decoration: none;
+}
+section.admin-actions ul li span{
+	width:82%; font-size: 14px;
+	line-height:3.5; margin-left: 5px;
+	color: #4d4d4d;
+	cursor: pointer;
+	font-family: Arial;
+}
+
+section.admin-actions ul li button{
+	border-radius: 0px;
+	background-color: transparent;
+	border-color: transparent;
+	/*color: #404040;*/
+	font-weight: 800;
+	font-size: 22px;
+	font-weight: 820;
+    font-family: Arial;
+    color: #002F6C;
+}
+
 /*Notificaiones*/
 /*Cuando es mobil*/
 #mobil-notifications{
@@ -230,6 +309,10 @@ section.interface-actions{
 	border-top:1px solid #E3E4E8;
 	border-bottom:1px solid #E3E4E8;
 	padding:15px;
+}
+section.interface-actions button.btn-light{
+	margin-left: 10px;
+	border-color: #cdd;
 }
 .interface-actions h6{
 	padding-top: 10px;
@@ -636,6 +719,7 @@ button.btn-brm-showAll div.icon-plus{
 .brm-forms .form-group input.link-relacionados{
 	background: #fff url("/assets/icons/web-link.svg") no-repeat right .75rem center;
 }
+
 .brm-forms .form-group input[type="date"]:focus,
 .brm-forms .form-group input[type="number"]:focus,
 .brm-forms .form-group input[type="text"]:focus,
