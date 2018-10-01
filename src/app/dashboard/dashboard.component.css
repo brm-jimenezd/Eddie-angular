@@ -158,7 +158,7 @@ section.admin-actions ul li:last-child{
 }
 section.admin-actions ul li .brm-icon{
 	margin-top: 13px; margin-left: 10px;
-	color:red; width: 20px; height: 20px;
+	width: 20px; height: 20px;
 	opacity: 0.5;
 }
 section.admin-actions a:hover{
@@ -624,74 +624,6 @@ button.btn-brm-showAll div.icon-plus{
     margin-left: 10px;
     color: #fff;
 }
-/*Media queries*/
-@media screen and (max-width: 1031px){
-	.user-info span.user-name{ /*Nombre del usuario*/
-		width: 40%; top:-40px;
-	}
-	.work-datetime span.bag-brm{ font-size:12px;}
-}
-@media screen and (max-width: 575px){
-	.lateral-left-filter{
-		display: none;
-	}
-	nav.top-navbar-main{
-		position: absolute;
-		left: 0px; width: 100%;
-	}
-	figure.brand-logo{
-		z-index:1;position: relative;
-		left: 60px; margin-top: 13px;
-	}
-	.logs-container{
-		margin-top: 15px; z-index: 1;
-		position: relative;right: 0px;
-		margin-right: 10px;
-	}
-	.main-top-menu li{
-		width:100%;display: block;
-		border-bottom: 1px solid #edeef0;
-		height: 50px; line-height: 3;
-	}
-	.main-top-menu{
-		font-size: 12px; background-color: #fff;
-		height: 100%;border:1px solid #ddd;
-		margin-top: 38px;
-	}
-	.main-top-menu .dropdown-menu{ width: 90%;  left: 6%;  }
-	.main-top-menu .dropdown-menu a{ border-bottom:1px solid #dcdee0; }
-}
-@media screen and (max-width: 840px){
-	.user-info span.user-name{ display: none; }/*Desaparecer nombre de user*/
-	.tasks-info {flex-wrap:wrap;}
-	.work-order header.header-order-work{ flex-wrap:wrap; }
-	.comment-header{ flex-wrap:wrap;}
-	.comment-header h5, .comment-header .ml-auto{padding-top: 5px !important;}
-	.logs-container{
-		width: 122px;
-		margin-right: 10px; padding-left: 0px;
-	}
-	.work-datetime span.bag-brm{ font-size:14px;}
-}
-@media screen and (max-width: 440px){
-	.interface-actions{flex-wrap: wrap;text-align: center;}
-	.interface-actions h6{width: 100%; text-align: center;margin-bottom: 20px !important; }
-	.interface-actions button{width: 100%;}
-	.logs-container{margin-right: 15px;}
-	.work-order header div.work-datetime{ flex-wrap:wrap; }
-	.work-order header div.work-datetime span.bag-brm{ 
-		width: 91%;
-		display: inline-block; 
-		margin-bottom: 10px;
-		text-align: center;
-	}
-	div.user-asing-work-order span.title{
-		font-size: 11px; margin-top: 6px;
-	}
-}
-
-
-
 
 
 /*CREAR UNA NUEVA OT*/

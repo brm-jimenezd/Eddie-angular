@@ -74,14 +74,14 @@
 
 
 	<section id="all-order" *ngIf="_viewActive  == 'form'">
-		<article class="work-order">
+		<article class="card-ot">
 			<div class="main">
-				<header class="d-flex header-order-work">
+				<header class="d-flex card-ot-header">
 					<span class="bag-brm left-bag-brm bag-proceso"> Nuevo Cliente </span>
 				</header>
-				<div class="body-work-order">
+				<div class="card-ot-body">
 					<p>Todos los campos marcados so obligatorios * </p>
-						<div action="/action_page.php" class="row brm-forms">
+						<div class="row brm-forms">
 							<div class="form-group col-sm-12">
 								<input type="hidden" class="form-control" id="client-identy" [(ngModel)]="_indety">
 								<input type="text" class="form-control orderWorkTitle" id="client-name" placeholder="Ingresa un título"  [(ngModel)]="_name">

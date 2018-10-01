@@ -1,0 +1,121 @@
+.card-ot-body .obligatory-fields{
+	color: #595959;
+	font-weight: 430;
+}
+.btn-brm-create{
+	background-color: #C3B578; border-color: #C3B578;
+}
+.btn-brm-delete{
+	background: transparent !important;
+	color: #dc3545 ;
+}
+.btn-brm-add-url{
+	color: #002F6C;
+    font-weight: 300;
+    font-size: 13px;
+    margin-top: 13px;
+    background-color: transparent !important;
+    border-color: transparent !important;
+}
+.btn-brm-add-url div.icon-plus{
+	margin-left: 10px;
+	line-height: 1.4;
+	margin-top: -9px;
+	width: 35px !important;height: 35px !important;
+}
+
+.form-group .autocomplete{
+	width:96%;
+	max-height:150px;
+	overflow-x:hidden;
+	overflow-y:auto; 
+	background-color: #fff;
+	margin-left:10px;
+	box-shadow: 0px 5px 5px rgba(0,0,0,0.5);
+	border-radius:0px 0px 5px 5px;
+	position:absolute;
+	z-index:1;
+}
+
+.form-group .autocomplete .item{ padding:5px 10px; border-bottom: 1px solid #cdd; cursor: pointer }
+.form-group .autocomplete .item:hover{ background-color: #e6e6e6;}
+.form-group .autocomplete .item:last-child{ border-bottom: 1px solid transparent;}
+.form-group input.orderWorkTitle{
+	margin-top: 20px;
+	font-size: 15px;
+	font-weight: 310;
+	text-transform: uppercase;
+	border-color: transparent;
+	border-bottom-color: #ccd;
+	border-radius: 0px;
+}
+.brm-forms .form-group select, 
+.brm-forms .form-group input{
+	border-radius: 0px;
+	border:1px solid transparent;
+	border-bottom: 1px solid #ccd;
+	color: #ccd; font-weight: 300;
+	background-size: 12px !important;
+}
+.brm-forms .form-group input[type="text"],
+.brm-forms .form-group select{
+	background: #fff url("/assets/icons/arrow-down.svg") no-repeat right .75rem center;
+}
+.brm-forms .form-group input[type="date"]{
+	background: #fff url("/assets/icons/calendar.svg") no-repeat right .75rem center;
+}
+.brm-forms .form-group input.link-relacionados{
+	background: #fff url("/assets/icons/web-link.svg") no-repeat right .75rem center;
+}
+.brm-forms .form-group input.user-logo{
+	background: #fff url("/assets/icons/user-shape.svg") no-repeat right .75rem center;
+}
+.brm-forms .form-group input.search-logo{
+	background: #fff url("/assets/icons/search.svg") no-repeat right .75rem center;
+}
+.brm-forms .form-group input[type="date"]:focus,
+.brm-forms .form-group input[type="number"]:focus,
+.brm-forms .form-group input[type="text"]:focus,
+.brm-forms .form-group select:focus,
+.form-group input.orderWorkTitle:focus
+{
+	border-color: transparent !important;
+	transition:.1s all;
+	background: #fff;
+	border-bottom: 2px solid #002F6C !important;
+	box-shadow: 0 0 0 0rem rgba(128,189,255,.5) !important;
+	color: #002F6C;
+	font-weight: 400;
+}
+.brm-forms .form-group input{
+	border-bottom-color: #ccd;
+}
+
+.brm-forms .type-time{
+	padding: 0px;
+}
+.brm-forms .type-time:first-child{
+	padding-left: 13px;
+}
+.brm-forms .type-time .data-time{
+	border-bottom:1px solid #ccd;
+	line-height: 2.3;
+	padding:0 10px;
+}
+.brm-forms .type-time:first-child .data-time{
+	border-right:1px solid #ccd;
+}
+.card-ot-body.content-autocomplete{
+	overflow: initial !important;
+}
+div.icon-plus{ 
+	background-color: #002F6C;
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    border-radius: 50%;
+    margin-top: -9px;
+    margin-left: 10px;
+    color: #fff;
+    line-height: 1.3 !important;
+}

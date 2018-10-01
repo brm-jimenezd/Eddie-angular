@@ -3,10 +3,265 @@ html,body {
 	background-color: #F3F4F5;
     overflow-x:hidden;
 }
+.breadcrumb{
+	margin-bottom:0px !important;
+	background-color:transparent !important;
+	padding: 15px 2px;
+}
+.breadcrumb li.breadcrumb-item a{
+	color: #002F6C !important; 
+}
+a:hover{text-decoration: none;}
+.breadcrumb li.breadcrumb-item a:hover{ text-decoration: none;}
+.btn{
+	box-shadow: 0 0 0 0.2rem transparent !important;
+}
+.form-control:focus{ 
+	border-color: #ced4da !important;
+	box-shadow: 0 0 0 0.2rem transparent !important;
+}
+.oculto{
+	display: none !important;
+}
 .btn-brm{
-    background-color: #002F6C !important; border-color: #002F6C !important;
+    background-color: #002F6C !important;
+     border-color: #002F6C !important;
     padding: 6px 35px;
 }
 .noPadding{
 	padding:0px !important;
 }
+a:hover{
+	text-decoration: none !important;
+}
+figure.user-circle {
+	margin-left:3px;
+	width:45px;
+	height:45px;
+	background-color:#ddd;
+	border-radius:50%;
+	overflow: hidden;
+	text-align: center
+}
+.colorBlue{
+	color: #002F6C !important;
+}
+.borderBlue{
+	border-color:#002F6C !important;
+}
+
+/*Reescribir paginación bootstrap*/
+.admin-pagination{
+	margin-top: 15px;
+}
+.admin-pagination li{
+	border-color: transparent;
+}
+.admin-pagination li:first-child a{
+	background-color: #002F6C !important;
+	border-radius: 50% 0 0 50% !important;
+	color: #fff !important;
+	border-color: #002F6C !important;
+}
+
+.admin-pagination li:last-child a{
+	background-color: #002F6C !important;
+	border-radius: 0 50% 50% 0% !important;
+	color: #fff !important;
+	border-color: #002F6C !important;
+} 
+
+.admin-pagination li a{
+	color: #4d4d4d;
+	font-size: 15px !important;
+	border-width: 0px !important;
+	border-radius: 0px !important;
+	border-color: transparent !important;
+	border-bottom: 2px solid #ccd !important;
+}
+.admin-pagination li a:hover{
+	background-color: transparent;
+	color: #002F6C;
+	border-bottom: 2px solid #002F6C !important;
+	background-color: transparent !important
+}
+.admin-pagination li.active a{
+	color: #002F6C !important;
+	border-bottom: 2px solid #002F6C !important;
+	background-color: transparent !important
+}
+/*:::::FIN ADMIN:::::*/
+
+
+/*::: Cabecera de información en lista de ots, crea ots, y detalles de ots::*/
+.card-ot{ /*Before work-order*/
+	background-color: #fff;
+	border-radius:10px;
+	border:1px solid #ccd;
+	margin-bottom: 25px;
+}
+.card-ot .main{
+	padding:0px 20px;
+}
+.card-ot-header{
+	border-bottom:1px solid #e6eaea;
+	padding: 15px 0px;
+}
+span.bag-brm{ 
+	border:1px solid #E3E4E8; font-size:16px;
+	padding:4px 20px;border-radius:20px;
+	height:35px;margin-left: 10px;
+	background-color: #FBFBFC; color:#818181;
+}
+span.left-bag-brm{
+	margin-left:-40px !important;
+	margin-top:5px;
+	padding:4px 40px !important;
+}
+/*Estado de las tareas*/
+span.bag-Creación{
+	background-color: rgba(0, 47, 108,0.3) !important;
+	color: #002F6C !important;
+}
+span.bag-proceso{ 
+	background-color:rgba(255, 178, 21,0.3) !important;
+	color:#e69900 !important;
+	border-color:#FFB215 !important;
+	text-transform: capitalize;
+ }
+ span.bag-asignado{ 
+	background-color:rgba(0, 181, 45, 0.3) !important;
+	color:#00B52D !important;
+	border-color:rgba(0, 181, 45, 0.3) !important;
+	text-transform: capitalize;
+ }
+  span.bag-pendiente{ 
+	background-color: rgba(255, 13, 13, 0.3) !important;
+	color:#FF0D0D !important;
+	border-color:rgba(255, 13, 13, 0.3) !important;
+	text-transform: capitalize;
+ }
+.ot-title{
+	margin-left:20px;
+	margin-top:8px;
+}
+div.card-ot-datetime{/*antes work-datetime*/
+	padding-top: 11px;
+}
+.card-ot-body{/*body-work-order*/
+	padding:20px 10px;
+	overflow: hidden;
+}
+.card-ot-body h5{
+	margin-bottom: 0px;
+}
+.card-ot-body small.ot-time-info{ 
+	display: inline-block;
+	font-size: 12px;
+	font-weight: 400;
+	color:#8c8c8c;
+	margin-bottom: 10px;
+}
+.card-ot-body p{
+	color: #616563;
+}
+.card-ot-body ul li b{
+	margin-left: 4px;
+	text-transform: uppercase;
+}
+.card-ot-body .info-text{ 
+	color: #002F6C !important;
+	text-transform: capitalize;
+}
+.card-ot-body .asociate-links{
+	display: block;
+	color: #000;
+}
+footer.comments-list{
+	background-color: #FBFBFC;
+	border-radius: 0px 0px 10px 10px;
+}
+footer.comments-list 
+header.comment-header{
+	border:1px solid #DCDEE0;
+	padding:5px 20px;
+	background-color: #FBFBFC;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+footer.comments-list 
+header.comment-header h5{
+	width: 70%;
+	padding-top: 20px;
+}
+footer.comments-list 
+header.comment-header 
+div.ml-auto.d-flex{
+	padding-top:10px;
+	color: #fff;
+}
+figure.icon-comment{ 
+	height: 45px;
+	width: 45px;
+	position: relative;
+	opacity: .6;
+	text-align: center;
+	padding-top: 5px;
+}
+figure.icon-comment img{
+ 		width:80%;
+}
+footer.comments-list
+header.comment-header button{
+	width:80px;
+	margin-left: 15px;
+	height: 45px;
+	background-color: #fff !important;
+}
+span.number-comment{
+	position: absolute; 
+	top:11px;left: 18px
+}
+.user-asing-work-order .title-responsable
+{
+	display: inline-block;
+    margin-top: 7px;
+    margin-left: 10px;
+}
+footer.brm-form-actions{
+	padding:15px 0px;
+}
+footer.brm-form-actions .btn{
+	font-weight:320; padding:10px 50px; 
+	margin-right: 10px;
+}
+
+
+
+
+/*Este contenido se repite en dos secciones en detail y en new-task*/
+.add-new-comment{
+	border-top:1px solid #ccd;
+	padding:10px 20px;color: #818181;
+}
+.add-new-comment span {padding-left: 10px;}
+.add-new-comment b{font-weight: 350;opacity: .7}
+.add-new-comment textarea{
+	width:100%;border-radius: 4px;
+	max-height: 80px;min-height: 80px;
+	padding-left: 10px;border:1px solid #ccd;
+	color: #737373; font-weight: 340;
+}
+.add-new-comment textarea:focus{
+	border-color: #ccd !important;
+	box-shadow: 0 0 0 0rem rgba(128,189,255,.5) !important;
+}
+.add-new-comment.brm-form{
+	border-top-color:transparent; 
+	padding:0px;
+}
+.add-new-comment.brm-form textarea{
+	padding-left: 20px;
+	padding-top: 5px; 
+}
+

@@ -5,11 +5,11 @@ import { task } from '../models/task';
 import { LIST } from '../models/task-lists';
 
 @Component({
-  selector: 'app-edit',
-  templateUrl: './edit.component.html',
-  styleUrls: ['./../index/app.component.css']
+  selector: 'app-edit-task',
+  templateUrl: './edit-task.component.html',
+  styleUrls: ['./../css-elements/forms.css','./../tasks/tasks.component.css']
 })
-export class EditComponent implements OnInit {
+export class EditTaskComponent implements OnInit {
 	detail: task;
   constructor( private route: ActivatedRoute ) { }
 

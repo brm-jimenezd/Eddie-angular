@@ -44,7 +44,7 @@
 		<div class="loading company-loading" *ngIf="_grupos == undefined">Cargando...</div>
 
 		<div class="main" *ngFor="let grupo of _grupos; let i = index;" id="row-group-{{grupo.id}}">
-			<header class="header-order-work d-flex">
+			<header class="card-ot-header d-flex">
 				<span class="bag-brm bag-counter"> {{i+1}} </span>
 					<div class="register-information">
 						<h5 class="colorBlue"> {{grupo.nombre}} </h5>
@@ -98,7 +98,7 @@
 		<div class="loading company-loading" *ngIf="_areas == undefined">Cargando...</div>
 
 		<div class="main" *ngFor="let area of _areas; let i = index;" id="row-areas-{{area.id}}">
-				<header class="header-order-work d-flex">
+				<header class="card-ot-header d-flex">
 					<span class="bag-brm bag-counter">  {{i+1}} </span>
 						<div class="register-information">
 							<h5 class="colorBlue"> {{area.nombre}} </h5>
@@ -140,10 +140,8 @@
 					<i class="fas fa-angle-right"></i>
 				</a>
 			</li>
-
 		</ul>
   </div>
-
 
 
   <div class="tab-pane container fade table-admin" id="PERFILES">
@@ -157,7 +155,7 @@
 		<div class="loading company-loading" *ngIf="_perfiles == undefined">Cargando...</div>
 
 			<div class="main" *ngFor="let perfiles of _perfiles ;let i = index;" id="row-perfiles-{{perfiles.id}}">
-				<header class="header-order-work d-flex">
+				<header class="card-ot-header d-flex">
 					<span class="bag-brm bag-counter">  {{i+1}} </span>
 						<div class="register-information">
 							<h5 class="colorBlue"> {{perfiles.nombre}} </h5>
@@ -209,15 +207,15 @@
 	</section>
 
 	<section id="all-order">
-		<article class="work-order">
+		<article class="card-ot">
 			<div class="main">
-				<header class="d-flex header-order-work">
+				<header class="d-flex card-ot-header">
 					<span class="bag-brm left-bag-brm bag-proceso"> Nuevo Grupo </span>
 				</header>
 
-				<div class="body-work-order content-autocomplete">
+				<div class="card-ot-body content-autocomplete">
 						<p>Todos los campos marcados son obligatorios * </p>
-					<form action="/action_page.php" class="row brm-forms">
+					<form class="row brm-forms">
 						<div class="form-group col-sm-12 col-md-8">
 							<input type="hidden" class="form-control user-logo" name="group-id" id="group-id" placeholder="* Agregar un Nombre">
 							<input type="text" class="form-control user-logo" name="group-name" [(ngModel)]="_grouptName" id="group-name" placeholder="* Agregar un Nombre">
@@ -260,15 +258,15 @@
 	</section>
 
 	<section id="all-order">
-		<article class="work-order">
+		<article class="card-ot">
 			<div class="main">
-				<header class="d-flex header-order-work">
+				<header class="d-flex card-ot-header">
 					<span class="bag-brm left-bag-brm bag-proceso"> Nueva Area </span>
 				</header>
 
-				<div class="body-work-order">
+				<div class="card-ot-body content-autocomplete">
 						<p>Todos los campos marcados son obligatorios * </p>
-						<form action="/action_page.php" class="row brm-forms">
+						<form class="row brm-forms">
 							<div class="form-group col-sm-12">
 								<input type="hidden" class="form-control user-logo" id="areas-id">
 								<input type="text" class="form-control user-logo" id="areas-name" placeholder="* Agregar un Nombre">
@@ -328,13 +326,13 @@
 	</section>
 
 	<section id="all-order">
-		<article class="work-order">
+		<article class="card-ot">
 			<div class="main">
-				<header class="d-flex header-order-work">
+				<header class="d-flex card-ot-header">
 					<span class="bag-brm left-bag-brm bag-proceso"> Nuevo perfil </span>
 				</header>
 
-				<div class="body-work-order content-autocomplete">
+				<div class="card-ot-body content-autocomplete">
 						<p>Todos los campos marcados son obligatorios * </p>
 						<form action="/action_page.php" class="row brm-forms">
 							<div class="form-group col-sm-12 col-md-6">

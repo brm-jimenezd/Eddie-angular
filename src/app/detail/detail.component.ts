@@ -6,7 +6,7 @@ import { LIST } from '../models/task-lists';
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',
-  styleUrls: ['./../index/app.component.css']
+  styleUrls: ['./detail.component.css']
 })
 export class DetailComponent implements OnInit {
   detailTask: task;

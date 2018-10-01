@@ -1,0 +1,19 @@
+/*::::::::::ADMINISTRADOR GRUPOS,AREAS, PERFILES::::::::*/
+@media screen and (max-width: 840px){
+	/*.user-info span.user-name{ display: none; }
+	.tasks-info {flex-wrap:wrap;}
+	.work-order header.header-order-work{ flex-wrap:wrap; }
+	.comment-header{ flex-wrap:wrap;}
+	.comment-header h5, .comment-header .ml-auto{padding-top: 5px !important;}
+	.logs-container{
+		width: 122px;
+		margin-right: 10px; padding-left: 0px;
+	}
+	.work-datetime span.bag-brm{ font-size:14px;}
+	.header-order-work{
+		background-color: red;
+	}*/
+	.bag-brm{
+		background-color: red !important;
+	}
+}

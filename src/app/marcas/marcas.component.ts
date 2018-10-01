@@ -4,7 +4,7 @@ import { RequestService } from '../services/request.service';
 @Component({
   selector: 'app-marcas',
   templateUrl: './marcas.component.html',
-  styleUrls: ['./../index/app.component.css']
+  styleUrls: ['./../css-elements/forms.css','./marcas.component.css', './../css-elements/table.css']
 })
 export class MarcasComponent implements OnInit {
 
@@ -100,7 +100,7 @@ export class MarcasComponent implements OnInit {
 		this._marcasName = "";
 		this._marcasName = "";
 		this._marcasAddress = "";
-		this._marcasPhone = "";
+		this._marcasPhone;
 		this._marcasEmail = "";
 		this._marcasCity = "";
 		this._marcasCliente = "";

@@ -1,0 +1,133 @@
+/*::::::::::LISTA DE LAS MEDIA QUERIES EN TODA LAS PAGINAS::::::::*/
+@media screen and (max-width: 1031px){
+	.card-ot-datetime span.bag-brm{ font-size:12px; }
+}
+
+@media screen and (max-width: 840px){
+	.card-ot-header{ 
+		flex-wrap: wrap;
+		 }
+	.user-info span.user-name{ 
+		display: none !important;
+		 }
+	.tasks-info {
+		flex-wrap:wrap;
+	}
+	.comment-header{ 
+		flex-wrap:wrap;
+	}
+	.comment-header h5, 
+	.comment-header .ml-auto{
+		padding-top: 5px !important;
+	}
+	.logs-container{
+		    width: 122px !important;
+    		margin-right: 18px;
+   			padding-left: 0px !important;
+	}
+
+	.card-ot-header span.bag-brm{ 
+		font-size:14px;
+	}
+}
+
+@media screen and (max-width: 575px){
+	.card-ot-datetime{
+		flex-wrap: wrap;
+   		display: flex;
+   		/*flex-direction: row-reverse;*/
+	}
+	.card-ot-datetime span:first-child{
+		margin-bottom: 10px;
+	}
+	.lateral-left-filter{
+		display: none;
+	}
+	nav.top-navbar-main{
+		position: absolute;
+		left: 0px; width: 100%;
+	}
+	button.navbar-toggler{ z-index: 2;}
+	figure.brand-logo{
+		z-index:1;
+		position: relative;
+		left: 60px;
+		margin-top: 13px;
+	}
+	.logs-container{
+		margin-top: 15px; 
+		z-index: 1;
+		position: relative;
+		right: 0px;
+		margin-right: 10px;
+	}
+	#navbarSupportedContent{
+		width: 100%;
+    	position: fixed;
+    	top: 37px;
+    	z-index: 1;
+	}
+	.top-main{
+		position: fixed;
+		width: 100%;
+		z-index:100;
+		border-top: 1px solid #cdd;
+		box-shadow: 0px 5px 5px rgba(0,0,0,0.4);
+	}
+	.interface-actions{
+		padding-top: 80px !important;
+		flex-wrap:wrap;
+	}
+	.interface-actions h6{
+		margin-bottom: 10px !important;
+	}
+	.main-top-menu{
+		font-size: 12px;
+		background-color: #fff;
+		height: 100%;
+		border:1px solid #ddd;
+		margin-top: 38px;
+	}
+	.main-top-menu li{
+		background-color: #fff;
+		width:100% !important;
+		display: block;
+		border-bottom: 1px solid #edeef0;
+		height: 50px !important; 
+		line-height: 3 !important;
+	}
+	
+	.main-top-menu .dropdown-menu{ 
+		width: 90%; 
+		left: 6%;
+		  }
+	.main-top-menu .dropdown-menu a{
+		border-bottom:1px solid #dcdee0;
+		 }
+	#desktop-notifications{ 
+		position: inherit !important;
+		 }
+}
+@media screen and (max-width: 440px){
+	.logs-container{
+		margin-right: 15px;
+	}
+	.work-order header div.work-datetime{ flex-wrap:wrap; }
+	.work-order header div.work-datetime span.bag-brm{ 
+		width: 91%;
+		display: inline-block; 
+		margin-bottom: 10px;
+		text-align: center;
+	}
+	div.user-asing-work-order span.title{
+		font-size: 11px; margin-top: 6px;
+	}
+	.bag-counter{
+		display: none !important;
+	}
+}
+
+
+
+
+

@@ -12,14 +12,13 @@ import { LoginComponent } from './login/login.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TasksComponent } from './tasks/tasks.component';
-import { CreatasksComponent } from './creatasks/creatasks.component';
+import { NewTaskComponent } from './new-task/new-task.component';
 import { DetailComponent } from './detail/detail.component';
-import { EditComponent } from './edit/edit.component';
-import { AdminEditComponent } from './admin-edit/admin-edit.component';
+import { EditTaskComponent } from './edit-task/edit-task.component';
 import { UsersComponent } from './users/users.component';
 import { MarcasComponent } from './marcas/marcas.component';
 import { ClientesComponent } from './clientes/clientes.component';
-import { PlacejobComponent } from './placejob/placejob.component';
+import { CompanyComponent } from './company/company.component';
 import { OtsComponent } from './ots/ots.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
@@ -30,14 +29,13 @@ import { NotFoundComponent } from './not-found/not-found.component';
     LoginComponent,
     DashboardComponent,
     TasksComponent,
-    CreatasksComponent,
+    NewTaskComponent,
     DetailComponent,
-    EditComponent,
-    AdminEditComponent,
+    EditTaskComponent,
     UsersComponent,
     MarcasComponent,
     ClientesComponent,
-    PlacejobComponent,
+    CompanyComponent,
     OtsComponent,
     NotFoundComponent
   ],

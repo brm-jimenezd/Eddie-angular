@@ -1,73 +1,72 @@
-<section class="tasks-info d-flex ">
+	<section class="tasks-info d-flex ">
 				<h5>
 					<span class="icon icon-calendar">
 						<img src="/assets/icons/calendar.svg" class="icon-brm icon-info" />
 					</span>
 					<span class="title colorBlue">CREANDO NUEVA TAREA: </span>
 				</h5>
-
-			</section>
+	</section>
 
 			<section id="all-order">
-				<article class="work-order">
+				<article class="card-ot">
 					<div class="main">
-						<header class="d-flex header-order-work">
+						<header class="d-flex card-ot-header">
 							<span class="bag-brm left-bag-brm bag-create"> Nueva OT </span>
-								<div class="ml-auto work-datetime">
+								<div class="ml-auto card-ot-datetime">
 									<span class="bag-brm"> OT-755 </span>
 								</div>
 						</header>
 
-						<div class="body-work-order">
-						<p>Todos los campos marcados so obligatorios * </p>
-						<form action="/action_page.php" class="row brm-forms">
+				<div class="card-ot-body">
+						<p class="obligatory-fields">Todos los campos marcados so obligatorios * </p>
+						<form class="row brm-forms">
 							<div class="form-group col-sm-12 col-md-6">
-								<select class="custom-select mb-3" (change)="selectCliente($event)" id="sel-marca">
+								<select class="custom-select mb-3" [(ngModel)]="_client" name="ot-cliente" (change)="selecMarca($event)">
 								    <option selected value="init">Cliente</option>
-								    <option *ngFor="let client of clients" id="cliente-option-{{client.id}}">
-								    	{{client.nombre}} {{client.id}}
+								    <option *ngFor="let client of clients" id="cliente-option-{{client.id}}" [value]="client.id">
+								    	{{client.nombre}}
 								    </option>
 								</select>
 							</div>
 
 						    <div class="form-group col-sm-12 col-md-6">
-							    	<select name="cars" class="custom-select mb-3">
+							    <select name="cars" class="custom-select mb-3" [(ngModel)]="_marca" name="ot-marca">
 								    <option selected>Marca</option>
-								    <option *ngFor="let marca of marcas">{{marca.nombre}}</option>
-								  </select>
+								    <option *ngFor="let marca of marcas" [value]="marca.id">{{marca.nombre}}</option>
+								</select>
 							</div>
 
 							<div class="form-group col-sm-12 col-md-6">
-								<select name="cars" class="custom-select mb-3">
+								<select name="cars" class="custom-select mb-3" [(ngModel)]="_tipeOT" name="ot-tipe">
 								    <option selected>Tipo OT</option>
-								    <option *ngFor="let grupo of grupos">{{grupo.nombre}}</option>
+								    <option *ngFor="let tipo of tipesOTS" [value]="tipo.id">{{tipo.tipo}}</option>
 								</select>
 							</div>
 
 						    <div class="form-group col-sm-12 col-md-6">
-							    	<select name="cars" class="custom-select mb-3">
+							    <select name="cars" class="custom-select mb-3" name="ot-">
 								    <option selected>Tipo OT</option>
-								    <option *ngFor="let tipeOTS of tipesOTS">{{tipeOTS.tipo}}</option>
-								  </select>
+								    <option *ngFor="let tipeOTS of tipesOTS" [value]="tipeOTS.id">{{tipeOTS.tipo}}</option>
+								</select>
 							</div>
 						</form>
 
-						</div>
+				</div>
 					</div>
 
 				</article>
 			</section>
 
 			<section id="all-order">
-				<article class="work-order">
+				<article class="card-ot">
 					<div class="main">
 						<div class="form-group col-sm-12">
-							<input type="text" class="form-control orderWorkTitle" id="pwd" placeholder="Escribe el título de la OT">
+							<input type="text" class="form-control orderWorkTitle" id="pwd" placeholder="Escribe el título de la OT" [(ngModel)]="_titleOT" name="ot-title">
 						</div>
 
-						<div class="body-work-order">
+						<div class="card-ot-body">
 							<div class="add-new-comment brm-form">
-								<textarea placeholder="Escribe las instrucciones"></textarea>
+								<textarea placeholder="Escribe las instrucciones" [(ngModel)]="_instructions" name="ot-instructions"></textarea>
 							</div>
 						</div>
 					</div>
@@ -86,25 +85,29 @@
 			</section>
 			
 			<section id="all-order">
-				<article class="work-order">
+				<article class="card-ot">
 					<div class="main">
-						<div class="body-work-order">
+						<div class="card-ot-body">
 						
-						<form action="" class="row brm-forms">
+						<form class="row brm-forms">
 							<div class="form-group col-sm-6 col-md-2 d-flex type-time">
-								<input type="number" class="form-control" id="hours" placeholder="Horas:">
+								<input type="number" class="form-control" id="hours" placeholder="Horas:" 
+										[(ngModel)]="_hours" name="ot-hours">
 								<div class="data-time">00	
 								</div>
 							</div>
 							<div class="form-group col-sm-6 col-md-2 d-flex type-time">
-								<input type="number" class="form-control" id="minutes" placeholder="Min:">
+								<input type="number" class="form-control" id="minutes" placeholder="Min:"
+										[(ngModel)]="_minutes" name="ot-minutes">
 								<div class="data-time">00</div>
 							</div>
 							<div class="form-group col-sm-6 col-md-4">
-								<input type="date" class="form-control" id="pwd" placeholder="Agregar una url aquí">
+								<input type="date" class="form-control" id="pwd" placeholder="Agregar una url aquí"
+										[(ngModel)]="_startDate" name="ot-date-start">
 							</div>
 							<div class="form-group col-sm-6 col-md-4">
-								<input type="date" class="form-control" id="pwd" placeholder="Agregar una url aquí">
+								<input type="date" class="form-control" id="pwd" placeholder="Agregar una url aquí"
+								 		[(ngModel)]="_endDate" name="ot-date-start">
 							</div>
 						</form>
 
@@ -125,17 +128,17 @@
 			</section>
 			
 			<section id="all-order">
-				<article class="work-order">
+				<article class="card-ot">
 					<div class="main">
-						<div class="body-work-order">
+						<div class="card-ot-body">
 						
 						<form action="/action_page.php" class="row brm-forms">
-							<div class="form-group col-sm-12">
-								<input type="text" class="form-control link-relacionados" id="pwd" placeholder="Agregar una url aquí">
+							<div class="form-group col-sm-12" id="relations-links">
+								<input type="text" class="form-control link-relacionados" id="pwd" placeholder="Agregar una url aquí" name="ot-url">
 							</div>
 						</form>
 
-						<button type="button" class="btn btn-primary btn-block btn-brm-add-url btn-brm-showAll d-flex justify-content-center">
+						<button type="button" class="btn btn-primary btn-block btn-brm-add-url btn-brm-showAll d-flex justify-content-center" (click)="addUrl()">
 							AGREGAR OTRA URL <div class="icon-plus">+</div>
 						</button>
 
@@ -143,7 +146,7 @@
 					</div>
 				</article>
 				<footer class="brm-form-actions d-flex justify-content-end">
-					<button type="button" class="btn btn-danger btn-brm-delete">
+					<button type="button" class="btn btn-danger btn-brm-delete" (click)="removeUrl()">
 						ELIMINAR
 					</button>
 					<button type="button" class="btn btn-dark btn-brm-create">
@@ -151,7 +154,6 @@
 					</button>
 				</footer>
 			</section>
-
 
 
 
@@ -166,14 +168,14 @@
 			</section>
 
 			<section id="all-order">
-				<article class="work-order">
+				<article class="card-ot">
 					<div class="main">
-						<div class="body-work-order">
+						<div class="card-ot-body">
 						
-						<form action="/action_page.php" class="row brm-forms">
+						<form class="row brm-forms">
 							<div class="form-group col-sm-12 col-md-4">
-								<select name="cars" class="custom-select mb-3">
-								    <option selected>Franja Horaria</option>
+								<select name="cars" class="custom-select mb-3" [(ngModel)]="_timeZone">
+								    <option selected value="init">Franja Horaria</option>
 									    <option *ngFor="let franja of franjas">
 									    	{{franja.franja_horaria}}
 									    </option>
@@ -181,20 +183,25 @@
 							</div>
 
 						    <div class="form-group col-sm-12 col-md-8">
-							    	<select name="cars" class="custom-select mb-3">
-								    <option selected>Asignar a...</option>
-								  	 <option *ngFor="let franja of franjas">
-									    	{{franja.franja_horaria}}
+							   	<select name="cars" class="custom-select mb-3" [(ngModel)]="_responsable">
+								    <option selected value="init">Asignar a...</option>
+								  	 <option *ngFor="let usuario of users" [value]="usuario.id">
+									    	{{usuario.nombre}}
 									</option>
-								  </select>
+								</select>
 							</div>
 						</form>
 
 						</div>
 					</div>
 				</article>
+
+				<div class="alert {{_alertClass}}" *ngIf="_alertState">
+					{{_alertText}}
+				</div>
+
 				<footer class="brm-form-actions d-flex justify-content-end">
-					<button type="button" class="btn btn-dark btn-brm-create">
+					<button type="button" class="btn btn-dark btn-brm-create" (click)="saveOTS()">
 						ASIGNAR TAREA
 					</button>
 				</footer>

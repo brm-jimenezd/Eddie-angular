@@ -5,7 +5,7 @@ import { RequestService } from '../services/request.service';
 @Component({
   selector: 'app-clientes',
   templateUrl: './clientes.component.html',
-  styleUrls: ['./../index/app.component.css']
+  styleUrls: ['./../css-elements/forms.css','./clientes.component.css', './../css-elements/table.css']
 })
 export class ClientesComponent implements OnInit {
 
@@ -152,7 +152,7 @@ export class ClientesComponent implements OnInit {
         	this._alert("success", "Registro Eliminado Con Exito");
                 this.getClientes(this._currentPage);
                 this.go('panel');
-          });
+        });
     }
 
 }

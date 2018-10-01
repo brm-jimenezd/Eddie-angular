@@ -1,4 +1,4 @@
-<section class="tasks-info d-flex " >
+<section class="tasks-info d-flex">
 	<h5>
 		<span class="icon icon-calendar">
 			<img src="/assets/icons/calendar.svg" class="icon-brm icon-info" />
@@ -13,77 +13,77 @@
 	</div>
 </section>
 
-
-ddd
-<section id="all-order" >
-		<article class="work-order" *ngFor="let order of tarea">
-			<div class="main">
-				<a routerLink="/tablero/detail/{{order.id}}" class="show-properties">
-					<header class="d-flex header-order-work">
-						<span class="bag-brm left-bag-brm bag-{{order.state}}"> 
-								{{order.state}}
-						</span>
-						<h4 class="colorBlue ot-title"> {{order.proyect}} </h4>
-							<div class="ml-auto work-datetime">
-								<span class="bag-brm"> OT-{{order.id}} </span>
-								<span class="bag-brm"> Fecha: {{order.date}} </span>
-							</div>
-					</header>
-				</a>
-
-						<div class="body-work-order">
-							<h5>{{order.title}}</h5>
-							<a routerLink="/tablero/AdminEdit/{{order.id}}/23" class="show-properties">
-								Editar como admin
-							</a>
-							<p>
-								{{order.description}}
-							</p>
-							<ul>
-								<li>
-									<span class="info-text">
-										el tiempo estimado para terminar la tarea es de:
-									</span>
-										<b>{{order.time}}</b>
-								</li>
-								<li>
-									<span class="info-text">
-										Links asociados:
-									</span>
-									<a  class="asociate-links" *ngFor="let link of order.links" href="{{link}}" target="_blank">
-										{{link}}
-									</a>
-								</li>
-							</ul>
-
-							<div class="d-flex user-asing-work-order">
-								<figure class="user-circle"> <img src="" /> </figure>
-								<span class="title"><b class="info-text">Tu</b>, Responsable de esta tarea</span>
-							</div>
+<section id="all-order">
+	<article class="card-ot" *ngFor="let ots of _ots">
+		<div class="main">
+			<a routerLink="/dashboard/detail/{{ots.id}}">
+				<header class="d-flex card-ot-header">
+					<span class="bag-brm left-bag-brm bag-{{ots.estado.estado}}"> 
+								{{ots.estado.estado}}
+					</span>
+					<h4 class="colorBlue ot-title"> {{ots.marca.nombre}} </h4>
+						<div class="ml-auto card-ot-datetime">
+							<span class="bag-brm"> OT-{{ots.identificador}}</span>
+							<span class="bag-brm"> Fecha: {{ots.fecha}} </span>
 						</div>
+				</header>
+			</a>
+
+			<div class="card-ot-body">
+				<h5> {{ots.titulo}}  </h5>
+				<small class="ot-time-info">
+					<b>Inicio:</b> {{ots.fecha_inicio}} / <b>Final:</b> {{ots.fecha_fin}}
+				</small>
+				<p> {{ots.descripcion}} </p>
+				
+				
+				<a routerLink="/dashboard/edit-task/{{ots.id}}" class="show-properties"> Editar como admin </a>
+				
+				<ul>
+					<li>
+						<span class="info-text"> El tiempo estimado para terminar la tarea es de: </span>
+							<b>{{ots.tiempo_asignado}}</b>
+					</li>
+					<li>
+						<span class="info-text"> Links asociados: </span>
+						<a class="asociate-links" href="" target="_blank">
+							Nombre del link
+						</a>
+					
+					</li>
+				</ul>
+
+				<div class="d-flex user-asing-work-order">
+						<figure class="user-circle"> <img src="" /> </figure>
+							<span class="title-responsable"><b class="info-text">Tu</b>, Responsable de esta tarea</span>
+				</div>
+			</div>
+		</div>
+		
+		<footer class="comments-list">
+			<header class="comment-header d-flex">
+				<h5>Comentarios</h5>
+					<div class="ml-auto d-flex">
+						<figure class="user-circle" >
+								<img src="" />
+						</figure>
+						
+						<figure class="icon-comment">
+							<img src="/assets/icons/speech-bubble.svg" />
+								<span class="number-comment">
+									2
+								</span>
+						</figure>
+						
+						<button type="button" class="btn btn-outline-secondary">
+							Ver
+						</button>
 					</div>
-					<footer class="comments-list">
-						<header class="comment-header d-flex">
-							<h5>Comentarios</h5>
-							<div class="ml-auto d-flex">
-								<figure class="user-circle" *ngFor="let comment of order.comments" >
-									<img src="" />
-								</figure>
-								<figure class="icon-comment">
-									<img src="/assets/icons/speech-bubble.svg" />
-										<span class="number-comment">
-											{{order.comments.length}}
-										</span>
-								</figure>
-								<button type="button" class="btn btn-outline-secondary">
-									Ver
-								</button>
-							</div>
-						</header>
+			</header>
+				
 
-
-					<!--usualmente la OT tiene estos campos ocultos-->
-						<div class="user-comments" *ngFor="let comment of order.comments; let ind = index">
+					<!--usualmente la OT tiene estos campos ocultos
+						<div class="user-comments" *ngFor="let comment of ots.comments; let ind = index">
 							<blockquote class="d-flex blockComment" *ngIf="ind < 2">
 								<figure class="user-circle"> <img src="" /> </figure> 
 								<div class="comment-maked">
@@ -99,27 +99,40 @@ ddd
 								</div>
 							</blockquote>
 						</div>
+					
 
 						<button type="button" class="btn btn-primary btn-block btn-brm-showAll d-flex justify-content-center" *ngIf="order.comments.length > 2">
 							<a routerLink="/tablero/detail/{{order.id}}" class=" d-flex">
 								Cargar mas comentarios <div class="icon-plus">+</div>
 							</a>
 						</button>
-
+					
 						<div class="add-new-comment oculto">
 								<span>Tu </span> <b>10-08-2018</b>
 							<textarea placeholder="Escribe un comentario"></textarea>
 						</div>
-
+					-->
 					</footer>
 				</article>
 </section>
 
-<ul class="pagination pagination-lg justify-content-center">
-  <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
-  <li class="page-item"><a class="page-link" href="#">1</a></li>
-  <li class="page-item"><a class="page-link" href="#">2</a></li>
-  <li class="page-item"><a class="page-link" href="#">3</a></li>
-  <li class="page-item"><a class="page-link" href="#">Next</a></li>
-</ul>
+<ul class="pagination pagination-lg justify-content-center admin-pagination" *ngIf="true">
+			  <li class="page-item">
+			  	<a class="page-link" href="#">
+			  		<i class="fas fa-angle-left"></i>
+			  	</a>
+			 </li>
+			  
+			  <li class="page-item active" 
+			  		*ngFor="let page of _totalPage"
+			  		(click)="getOts(page)"
+			  		[class.active]="_currentPage == page">
+			  			<a class="page-link">{{page}}</a>
+			  </li>	
 
+			<li class="page-item">
+				<a class="page-link" href="#">
+					<i class="fas fa-angle-right"></i>
+				</a>
+			</li>
+		</ul>

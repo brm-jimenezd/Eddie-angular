@@ -9,14 +9,14 @@
 	{{_alertText}}
 </div>
 
-<div class="company-admin-panel" *ngIf="_viewActive == 'panel'">
+<div class="company-admin-panel"  *ngIf="_viewActive == 'panel'">
 	<ul class="nav nav-tabs tabs-admin">
 		  <li class="nav-item">
 		    <a class="nav-link active" data-toggle="tab" href="#TIPOS">
 		    	TIPOS
 		    </a>
 		  </li>
-		  <li class="nav-item" (click)="loadDate('areas')">
+		  <li class="nav-item">
 		    <a class="nav-link" data-toggle="tab" href="#ESTADOS">
 		    	ESTADOS
 		    </a>
@@ -25,10 +25,10 @@
 
 <!-- Tab panes -->
 <div class="tab-content">
-  <div class="tab-pane container active table-admin" id="GRUPOS">
+  <div class="tab-pane container active table-admin" id="TIPOS" *ngIf="_viewActive == 'panel'">
 		<header class="d-flex registrer-states" *ngIf="_tipesOTS != undefined">
 		  	<h5>Registros: {{_allOTS}}</h5>
-		  	<button  class="btn btn-dark ml-auto" type="button" (click)="goTo('group', 'create')">
+		  	<button  class="btn btn-dark ml-auto" type="button" (click)="go('otTipesForm', 'create')">
 		  		<span class="icon">+</span> Añadir
 		  	</button>
 		</header>
@@ -48,10 +48,10 @@
 							</p>
 					</div>
 					<div class="buttons-admin-actions ml-auto">
-						<button type="button" class="btn btn-primary btn-brm-edit" (click)="goToEdit(tipes,'group','update')">
+						<button type="button" class="btn btn-primary btn-brm-edit" (click)="go('otTipesForm','update', tipes)">
 							<i class="fas fa-pencil-alt"></i>
 						</button>
-						<button type="button" class="btn btn-primary btn-brm-delete" (click)="delete(tipes.id, 'grupos')">
+						<button type="button" class="btn btn-primary btn-brm-delete" (click)="Delete('tipes', tipes.id)">
 							<i class="fas fa-trash"></i>
 						</button>
 					</div>
@@ -79,49 +79,45 @@
 		</ul>
   </div>
 
-  <div class="tab-pane container fade table-admin" id="AREAS">
-	  	<header class="d-flex registrer-states" *ngIf="_areas != undefined">
-			  	<h5>Registros: {{_totalAreas}}</h5>
-			  	<button  class="btn btn-dark ml-auto" type="button" (click)="goTo('area', 'create')">
+<div class="tab-pane container fade table-admin" id="ESTADOS">
+	  	<header class="d-flex registrer-states" *ngIf="_statesOts != undefined">
+			  	<h5>Registros: {{_totalStatesOts}}</h5>
+			  	<button  class="btn btn-dark ml-auto" type="button" (click)="go('otStadeForm', 'create')">
 			  		<span class="icon">+</span> Añadir
 			  	</button>
 		</header>
 
-		<div class="loading company-loading" *ngIf="_areas == undefined">Cargando...</div>
+		<div class="loading company-loading" *ngIf="_statesOts == undefined">Cargando...</div>
 
-		<div class="main" *ngFor="let area of _areas; let i = index;" id="row-areas-{{area.id}}">
+		<div class="main" *ngFor="let states of _statesOts; let i = index;" id="row-states-ots-{{states.id}}">
 				<header class="header-order-work d-flex">
 					<span class="bag-brm bag-counter">  {{i+1}} </span>
 						<div class="register-information">
-							<h5 class="colorBlue"> {{area.nombre}} </h5>
+							<h5 class="colorBlue"> {{states.estado}} </h5>
 								<p class="date"> 
-									<b>Fecha:</b> {{area.fecha}}
-								</p>
-								<p>
-									<b>Jefe:</b> {{area.usuario_jefe?.nombre}}
-									<span *ngIf="!area.usuario_jefe?.nombre">Sin jefe</span>
+									<b>Fecha:</b> {{states.fecha}}
 								</p>
 						</div>
 				<div class="buttons-admin-actions ml-auto">
-					<button type="button" class="btn btn-primary btn-brm-edit" (click)="goToEdit(area,'area','update')">
+					<button type="button" class="btn btn-primary btn-brm-edit" (click)="go('otStadeForm','update', states)">
 						<i class="fas fa-pencil-alt"></i>
 					</button>
-					<button type="button" class="btn btn-primary btn-brm-delete" (click)="delete(area.id, 'areas')">
+					<button type="button" class="btn btn-primary btn-brm-delete" (click)="Delete('states', states.id)">
 							<i class="fas fa-trash"></i>
 					</button>
 				</div>
 			</header>
 		</div>
-		<ul class="pagination pagination-lg justify-content-center admin-pagination" *ngIf="_areas != undefined">
+		<ul class="pagination pagination-lg justify-content-center admin-pagination" *ngIf="_statesOts != undefined">
 			<li class="page-item">
 			  	<a class="page-link" href="#">
 			  		<i class="fas fa-angle-left"></i>
 			  	</a>
 			 </li>
 			  <li class="page-item active"
-			  	  *ngFor="let pagesAr of _totalPageAreas"
-			  	  (click)="getAreas(pagesAr)"
-			  	  [class.active]="_currentPageAreas == pagesAr">
+			  	  *ngFor="let pagesAr of _totalAllStages"
+			  	  (click)="getStates(pagesAr)"
+			  	  [class.active]="_otsStatesCurrentPage == pagesAr">
 				  	<a class="page-link">
 				  		{{pagesAr}}
 				  	</a>
@@ -139,32 +135,88 @@
 </div>
 
 
-			<section class="tasks-info d-flex ">
-				<h6>
-					<span class="title colorBlue">OPCIONES NUEVA OT: </span>
-				</h6>
-			</section>
+
+<div *ngIf="_viewActive == 'otTipesForm'">
+	<section class="tasks-info d-flex ">
+		<h6>
+			<span class="title colorBlue">OPCIONES NUEVO TIPO OT: </span>
+		</h6>
+	</section>
+
+	<section id="all-order">
+		<article class="card-ot">
+			<div class="main">
+				<header class="d-flex card-ot-header">
+					<span class="bag-brm left-bag-brm bag-proceso"> Nuevo Tipo OT </span>
+						<div class="ml-auto work-datetime">
+							<span class="bag-brm"> Ver Tipos OT </span>
+						</div>
+				</header>
+
+				<div class="card-ot-body">
+					<p>Todos los campos marcados so obligatorios * </p>
+					
+					<form class="row brm-forms">
+						<div class="form-group col-sm-12 col-md-8">
+							<input type="hidden" class="form-control" name="_tipeOTid" [(ngModel)]="_tipeOTid">
+							<input type="text" class="form-control orderWorkTitle" id="pwd" placeholder="* Escribe el título" name="_tipeOTtitle" [(ngModel)]="_tipeOTtitle">
+						</div>
+
+						<div class="form-group col-sm-12 col-md-4" style="margin-top:20px;">
+							<select name="cars" class="custom-select mb-3" [(ngModel)]="_tipeOTgroup" name="_tipeOTgroup">
+							    <option selected>Tipo OT</option>
+								<option *ngFor="let grupos of _totalGroups" [value]="grupos.id">{{grupos.nombre}}</option>
+							</select>
+						</div>
+					</form>
+
+						</div>
+					</div>
+				</article>
+
+				<footer class="brm-form-actions d-flex justify-content-end">
+					<button class="btn btn-danger btn-brm-delete" type="button" (click)="go('panel','cancelar')">
+						CANCELAR
+					</button>
+
+					<button type="button" class="btn btn-dark btn-brm-create" (click)="saveTipes()">
+						CREAR TIPO OT
+					</button>
+				</footer>
+	</section>
+</div>
+
+
+
+<div *ngIf="_viewActive == 'otStadeForm'">
+		<section class="tasks-info d-flex">
+			<h6> <span class="title colorBlue">OPCIONES NUEVA OT: </span> </h6>
+		</section>
 
 			<section id="all-order">
-				<article class="work-order">
+				<article class="card-ot">
 					<div class="main">
-						<header class="d-flex header-order-work">
+						<header class="d-flex card-ot-header">
 							<span class="bag-brm left-bag-brm bag-proceso"> Nuevo Estado </span>
 								<div class="ml-auto work-datetime">
 									<span class="bag-brm"> Ver estados </span>
 								</div>
 						</header>
 
-						<div class="body-work-order">
-						<p>Todos los campos marcados so obligatorios * </p>
+						<div class="card-ot-body">
+							<p>Todos los campos marcados so obligatorios * </p>
 						<form action="/action_page.php" class="row brm-forms">
-							<div class="form-group col-sm-12 col-md-9">
-								<input type="text" class="form-control orderWorkTitle" id="pwd" placeholder="* Escribe el título">
+							<div class="form-group col-sm-12 col-md-12">
+								
+								<input type="hidden" class="form-control" name="ots-state-id" [(ngModel)]="_otsStateId">
+								
+
+								<input type="text" class="form-control orderWorkTitle" id="_otsNameState" placeholder="* Escribe el título" name="ots-state-name" [(ngModel)]="_otsNameState">
 							</div>
 
-						   <div class="form-group col-sm-12 col-md-3">
+						   <!--<div class="form-group col-sm-12 col-md-3">
 								<input type="text" class="form-control orderWorkTitle" id="pwd" placeholder="Color">
-							</div>
+							</div>-->
 						</form>
 
 						</div>
@@ -172,50 +224,16 @@
 				</article>
 
 				<footer class="brm-form-actions d-flex justify-content-end">
-					<button type="button" class="btn btn-dark btn-brm-create">
+					<button class="btn btn-danger btn-brm-delete" type="button" (click)="go('panel','cancelar')">
+						CANCELAR
+					</button>
+					<button type="button" class="btn btn-dark btn-brm-create" (click)="saveStatesOTS()">
 						CREAR ESTADO
 					</button>
 				</footer>
 			</section>
+</div>
 
-			<section class="tasks-info d-flex ">
-				<h6>
-					<span class="title colorBlue">OPCIONES NUEVO TIPO OT: </span>
-				</h6>
-			</section>
-
-			<section id="all-order">
-				<article class="work-order">
-					<div class="main">
-						<header class="d-flex header-order-work">
-							<span class="bag-brm left-bag-brm bag-proceso"> Nuevo Tipo OT </span>
-								<div class="ml-auto work-datetime">
-									<span class="bag-brm"> Ver Tipos OT </span>
-								</div>
-						</header>
-
-						<div class="body-work-order">
-						<p>Todos los campos marcados so obligatorios * </p>
-						<form action="/action_page.php" class="row brm-forms">
-							<div class="form-group col-sm-12 col-md-6">
-								<input type="text" class="form-control orderWorkTitle" id="pwd" placeholder="* Escribe el título">
-							</div>
-
-						   <div class="form-group col-sm-12 col-md-6">
-								<input type="text" class="form-control orderWorkTitle" id="pwd" placeholder="Color">
-							</div>
-						</form>
-
-						</div>
-					</div>
-				</article>
-
-				<footer class="brm-form-actions d-flex justify-content-end">
-					<button type="button" class="btn btn-dark btn-brm-create">
-						CREAR TIPO OT
-					</button>
-				</footer>
-			</section>
 
 
 

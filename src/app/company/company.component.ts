@@ -5,11 +5,11 @@ declare var jQuery:any;
 declare var $:any;
 
 @Component({
-  selector: 'app-placejob',
-  templateUrl: './placejob.component.html',
-  styleUrls: ['./../index/app.component.css']
+  selector: 'app-company',
+  templateUrl: './company.component.html',
+  styleUrls: ['./../css-elements/forms.css','./company.component.css', './../css-elements/table.css']
 })
-export class PlacejobComponent implements OnInit {
+export class CompanyComponent implements OnInit {
 	// _nombre =Nomenclatura para vairables globales
 
   //arrays y variables que cambian constantemente en la aplicación 
