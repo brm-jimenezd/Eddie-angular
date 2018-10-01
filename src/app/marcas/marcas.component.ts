@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RequestService } from '../services/request.service';
+import { AuthGuardianService } from '../services/auth/auth-guardian.service';
 
 @Component({
   selector: 'app-marcas',
@@ -36,12 +37,13 @@ export class MarcasComponent implements OnInit {
    //data
    _data: any;
 
-  constructor( public request: RequestService ) { }
+  constructor( public request: RequestService, public auth: AuthGuardianService ) { }
 
   ngOnInit() {
   	this.getMarcas(1);
 	this._viewActive = "panel";
 	this._currentAction = "";
+	this.auth.asAdmin();
   }
   	//Funcion para mostrar las alertas
 	  _alert(state, text){

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RequestService } from '../services/request.service';
+import { AuthGuardianService } from '../services/auth/auth-guardian.service';
 
 declare var jQuery:any;
 declare var $:any;
@@ -46,10 +47,11 @@ export class CompanyComponent implements OnInit {
    _alertState:boolean;
 
 
-  constructor( public request: RequestService ) { }
+  constructor( public request: RequestService, public auth: AuthGuardianService ) { }
 
   //llamar los datos desde el inicio de la aplicación
   ngOnInit() {
+      this.auth.asAdmin();
     	this.getGrupos(1);
       this.getUsuarios();
       this.getCiuddes();

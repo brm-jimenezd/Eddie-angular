@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 
 import { RequestService } from './services/request.service';
+import { AuthGuardianService } from './services/auth/auth-guardian.service';
 
 import { AppComponent } from './index/app.component';
 import { LoginComponent } from './login/login.component';
@@ -46,7 +47,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     HttpModule,
     FormsModule
   ],
-  providers: [ RequestService ],
+  providers: [ RequestService, AuthGuardianService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

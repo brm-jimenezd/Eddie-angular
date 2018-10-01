@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RequestService } from '../services/request.service';
+import { AuthGuardianService } from '../services/auth/auth-guardian.service';
 
 @Component({
   selector: 'app-ots',
@@ -40,12 +41,13 @@ export class OtsComponent implements OnInit {
    _alertClass:string;
    _alertText:string;
    _alertState:boolean;
-  constructor( public request: RequestService) { }
+  constructor( public request: RequestService, public auth: AuthGuardianService) { }
 
   ngOnInit() {
   		this.getTipeOts(1);
       this.getGrupos(1);
       this.getStates(1);
+      this.auth.asAdmin();
   }
   //Funcion para mostrar las alertas
     _alert(state, text){

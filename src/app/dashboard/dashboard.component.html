@@ -6,7 +6,7 @@
 	<header class="top-main d-flex">
 		<!--LOGO DE LA MARCA-->
 		<figure class="navbar-brand mr-auto brand-logo">
-			<a routerLink="/login">
+			<a (click)="logout()">
 				<img src="/assets/logo-brm.png"/>
 			</a>
 		</figure>
@@ -133,14 +133,14 @@
 	<section class="interface-actions d-flex">
 		<h6 style="margin:0px;">Listado OT'S Creadas <span>25</span></h6>
 	
-		<a routerLink="create" class="ml-auto">
+		<a routerLink="create" class="ml-auto" *ngIf="_panelAdmin">
 			<button type="button" class="btn btn-dark btn-brm ">
 				<span class="icon">+</span> Crear nueva OT
 			</button>
 		</a>
 
-			<button type="button" class="btn btn-light " style="position:relative;color:#666;" *ngIf="showAdminPanel" (click)="adminPanel()">
-				<span class="icon"> <i class="fas fa-cogs"></i> </span>
+		<button type="button" class="btn btn-light" style="position:relative;color:#666;" *ngIf="_panelAdmin" (click)="adminPanel()">
+			<span class="icon"> <i class="fas fa-cogs"></i> </span>
 
 	<section class="admin-actions" [class.active]="_panelstate">
 	  		<div class="tool-tip-notifi"></div>

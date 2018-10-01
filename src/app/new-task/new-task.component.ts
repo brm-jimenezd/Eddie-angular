@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RequestService } from '../services/request.service';
+import { AuthGuardianService } from '../services/auth/auth-guardian.service';
 
 declare var jQuery:any;
 declare var $:any;
@@ -41,7 +42,7 @@ export class NewTaskComponent implements OnInit {
    _alertState:boolean;
 
 
-	  constructor(  public request: RequestService ) { 
+	  constructor(  public request: RequestService, public auth: AuthGuardianService) { 
 	  }
 
     //Funcion para mostrar las alertas
@@ -102,7 +103,7 @@ export class NewTaskComponent implements OnInit {
                 links.push("s");
           });
            this._linksRelations = links;
-          console.error( this._linksRelations );
+          //console.error( this._linksRelations );
 
         this._data = {
              identificador: "OT1",
@@ -125,7 +126,7 @@ export class NewTaskComponent implements OnInit {
          }
 
           this.request.post('ots', this._data ).subscribe((res)=>{
-            console.warn(res);
+            //console.warn(res);
              //this._alert("success", "Registro Editado Con Exito");
                       //this.getMarcas(this._currentPage);
                
@@ -167,7 +168,7 @@ export class NewTaskComponent implements OnInit {
   	getTiposOTS(){
   	 	this.request.get('getTypeOts').subscribe((res)=>{
   	 		this.tipesOTS = res;
-  	 		console.warn("tiposots:", this.tipesOTS);
+  	 		//console.warn("tiposots:", this.tipesOTS);
 			return res;
 		});
   	}
@@ -175,7 +176,7 @@ export class NewTaskComponent implements OnInit {
     getFranjasHorarias(){
         this.request.get('getZones').subscribe((res)=>{
            this.franjas = res;
-           console.warn("Franjas:", this.franjas);
+           //console.warn("Franjas:", this.franjas);
           return res;
         });
     }
@@ -201,10 +202,8 @@ export class NewTaskComponent implements OnInit {
 	  	this.getClientes();
 	  	this.getTiposOTS();
       this.getUsuarios();
-	  	//this.getGrupos();
 	  	this.getFranjasHorarias();
-	  	//this.getResponsable();
-        console.warn("opinar");
+	  	this.auth.asAdmin();  
 	  }
 
  

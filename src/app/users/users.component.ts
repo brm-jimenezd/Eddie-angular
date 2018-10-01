@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthGuardianService } from '../services/auth/auth-guardian.service';
 
 @Component({
   selector: 'app-users',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsersComponent implements OnInit {
 
-  constructor() { }
+  constructor( public auth: AuthGuardianService ) { }
 
   ngOnInit() {
+  		this.auth.asAdmin();
   }
 
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RequestService } from '../services/request.service';
-
+import { AuthGuardianService } from '../services/auth/auth-guardian.service';
 
 @Component({
   selector: 'app-clientes',
@@ -36,12 +36,13 @@ export class ClientesComponent implements OnInit {
    _alertText:string;
    _alertState:boolean;
 
-  constructor( public request: RequestService) { }
+  constructor( public request: RequestService, public auth: AuthGuardianService) { }
 
 	  ngOnInit() {
 	  	this.getClientes(1);
 	  	this._viewActive = "panel";
 	  	this._currentAction = "";
+	  	this.auth.asAdmin();	
 	  }
 
 	//Funcion para mostrar las alertas

@@ -28,7 +28,7 @@ export class TasksComponent implements OnInit {
   			this._currentPage   = res.current_page;
       	this._totalMarcas   = res.total;
 
-        console.warn(this._ots);
+        //console.warn(this._ots);
 
       		if (this._totalPage.length == 0){
       	  	 	for (var i = 1; i <= parseInt(res.last_page); i++) {
