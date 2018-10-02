@@ -55,6 +55,7 @@ figure.user-circle {
 	margin-top: 15px;
 }
 .admin-pagination li{
+	background-color: #fff;
 	border-color: transparent;
 }
 .admin-pagination li:first-child a{
@@ -83,7 +84,7 @@ figure.user-circle {
 	background-color: transparent;
 	color: #002F6C;
 	border-bottom: 2px solid #002F6C !important;
-	background-color: transparent !important
+	background-color: gray !important
 }
 .admin-pagination li.active a{
 	color: #002F6C !important;

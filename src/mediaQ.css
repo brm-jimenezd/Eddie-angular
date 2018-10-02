@@ -37,6 +37,12 @@
    		display: flex;
    		/*flex-direction: row-reverse;*/
 	}
+	.dropdown-menu a{
+		background-color: #f2f2f2 !important;
+		height: 60px !important;
+    	line-height: 4 !important;
+    	box-shadow: 0px 5px 10px rgba(0,0,0,0.4)
+	}
 	.card-ot-datetime span:first-child{
 		margin-bottom: 10px;
 	}
@@ -88,13 +94,16 @@
 		border:1px solid #ddd;
 		margin-top: 38px;
 	}
+	div.drop-down-ots{
+		width: 100% !important; left: 0px !important;
+	}
 	.main-top-menu li{
 		background-color: #fff;
 		width:100% !important;
 		display: block;
 		border-bottom: 1px solid #edeef0;
-		height: 50px !important; 
-		line-height: 3 !important;
+		height: 70px !important; 
+		line-height: 5 !important;
 	}
 	
 	.main-top-menu .dropdown-menu{ 
