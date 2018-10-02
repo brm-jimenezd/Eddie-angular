@@ -10,7 +10,8 @@ export class LoginComponent implements OnInit {
 	  			id: 5,
 	  			token: "1728366781",
 	  			name: "Alexis",
-	  			role: "user" 
+          lastName: "Valencia",
+	  			role: "Admin" 
 	  		});
 
 

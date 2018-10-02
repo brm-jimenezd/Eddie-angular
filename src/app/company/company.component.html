@@ -2,10 +2,9 @@
 	<li class="breadcrumb-item">
 		<a routerLink="">Admin</a>
 	</li>
-	<li class="breadcrumb-item active" (click)="goTo('panel')">
-		<a>Compañia</a>
+	<li class="breadcrumb-item active">
+		Compañia
 	</li>
-	<li class="breadcrumb-item active">{{_viewActive}}</li>
 </ul>
 
 <div class="alert {{_alertClass}}" *ngIf="_alertState" id="company-alert">
@@ -217,7 +216,7 @@
 						<p>Todos los campos marcados son obligatorios * </p>
 					<form class="row brm-forms">
 						<div class="form-group col-sm-12 col-md-8">
-							<input type="hidden" class="form-control user-logo" name="group-id" id="group-id" placeholder="* Agregar un Nombre">
+							<input type="hidden" class="form-control user-logo" name="group-id" id="group-id" [(ngModel)]="_groupId">
 							<input type="text" class="form-control user-logo" name="group-name" [(ngModel)]="_grouptName" id="group-name" placeholder="* Agregar un Nombre">
 						</div>
 
@@ -267,13 +266,16 @@
 				<div class="card-ot-body content-autocomplete">
 						<p>Todos los campos marcados son obligatorios * </p>
 						<form class="row brm-forms">
+
+
+
 							<div class="form-group col-sm-12">
-								<input type="hidden" class="form-control user-logo" id="areas-id">
-								<input type="text" class="form-control user-logo" id="areas-name" placeholder="* Agregar un Nombre">
+								<input type="hidden" class="form-control user-logo" id="areas-id" [(ngModel)]="_arearId" name="_arearId">
+								<input type="text" class="form-control user-logo" id="areas-name" placeholder="* Agregar un Nombre" [(ngModel)]="_areaNombre" name="_areaNombre">
 							</div>
 
 						    <div class="form-group col-sm-12 col-md-4">
-							    	<select class="custom-select mb-3" id="areas-city">
+							    	<select class="custom-select mb-3" id="areas-city" [(ngModel)]="_areaCiudad" name="_areaCiudad">
 								    	<option selected value="init">* Agregar una ciudad</option>
 									    <option 
 									    	*ngFor="let ciudad of _cities" 
@@ -284,7 +286,7 @@
 							</div>
 
 							<div class="form-group col-sm-12 col-md-8">
-										<select class="custom-select mb-3" id="area-jefe">
+										<select class="custom-select mb-3" id="area-jefe" [(ngModel)]="_areaJefe" name="_areaJefe">
 										    	<option selected value="init">* Agregar un jefe</option>
 											    <option 
 											    	*ngFor="let usuario of _usuarios" 
@@ -336,12 +338,13 @@
 						<p>Todos los campos marcados son obligatorios * </p>
 						<form action="/action_page.php" class="row brm-forms">
 							<div class="form-group col-sm-12 col-md-6">
-								<input type="hidden" class="form-control user-logo" id="perfiles-id">
-								<input type="text" class="form-control user-logo" id="perfiles-names" placeholder="* Agregar un Nombre">
+								<input type="hidden" class="form-control user-logo" id="perfiles-id" [(ngModel)]="_pefilesId" name="_pefilesId"> 
+								<input type="text" class="form-control user-logo" id="perfiles-names" placeholder="* Agregar un Nombre" 
+										[(ngModel)]="_pefilesName" name="_pefilesName">
 							</div>
 
 							<div class="form-group col-sm-12 col-md-6">
-								<select class="custom-select mb-3" id="perfiles-grupos">
+								<select class="custom-select mb-3" id="perfiles-grupos" [(ngModel)]="_pefilesGrupos" name="_pefilesGrupos">
 								    	<option selected value="init">Grupo</option>
 									    <option 
 									    	*ngFor="let grupos of _grupos" 

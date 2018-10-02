@@ -21,6 +21,7 @@ export class DashboardComponent implements OnInit {
     this.showAdminPanel = true;
     this.auth.session();
     this._panelAdmin = this.auth.isAdmin;
+    console.warn(this.auth.user);
   }
 
   logout(){

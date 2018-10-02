@@ -26,8 +26,7 @@ export class CompanyComponent implements OnInit {
 	//Group form
 	_totalPage: any = [];
 	_currentPage: number;
-	_grouptName: string;
-	_groupArea: any;
+
 	_data: any;
 	_totalGrupos: number;
 
@@ -40,6 +39,23 @@ export class CompanyComponent implements OnInit {
   _totalPageAPerfiles: any = [];
   _currentPagePerfiles: number;
   _totalPerfiles: number;
+
+
+  //Models formulario Grupos
+  _grouptName: string;
+  _groupId: number;
+  _groupArea: any;
+
+  //Models formulario Areas
+  _arearId: number;
+  _areaNombre: string;
+  _areaCiudad: string;
+  _areaJefe: string;
+
+  //Models formulario perfiles
+  _pefilesId: number;
+  _pefilesName: string;
+  _pefilesGrupos: string;
 
   //alerts
    _alertClass:string;
@@ -151,186 +167,133 @@ export class CompanyComponent implements OnInit {
     searchUser(val:any){
       console.warn(val, "preparando autocomplete");
     }
-    //Cuando se ha guardado una area o perfil, activar su vista en el panel
-    showCurrentPanel(id){
-      $("ul.tabs-admin li a").removeClass("active");
-      $("ul.tabs-admin li a[href='#"+id+"']").addClass("active");
-      $("div.company-admin-panel .table-admin").removeClass("active").removeClass("show");
-      $("div.company-admin-panel .table-admin#"+id).addClass("active show");
-    }
-
-    //Areas
-    data:any;
+    //GUARDAR Y ACTUALIZAR LAS AREAS
     CRUDareas(){
-      //Datos para salvar 
-      var nombre    = $("#areas-name").val(),
-          id_ciudad = $("#areas-city").val(),
-          id_       = $("#areas-id").val(),
-          id_usuario_jefe = $("#area-jefe").val(),
-          ErrorStyle = "2px solid #800000";;
+    //Datos para salvar 
+     var  ErrorStyle = "2px solid #800000";
           
       //validaciones del formulario
-         if ( nombre == "" || nombre == undefined) {
+         if ( this._areaNombre == "" || this._areaNombre == undefined) {
               this._alert("danger", "El campo nombre es requerido");
             $("#areas-name").css("border-bottom", ErrorStyle);
             return false;
          }
 
-         if ( id_ciudad == "init" || id_ciudad == undefined) {
+         if ( this._areaCiudad == "init" || this._areaCiudad == undefined) {
               this._alert("danger", "La ciudad es requerida");
             $("#areas-city").css("border-bottom", ErrorStyle);
             return false;
          }
 
-        if ( id_usuario_jefe == "init" || id_usuario_jefe == undefined) {
+        if ( this._areaJefe == "init" || this._areaJefe == undefined) {
                this._alert("danger", "El Nombre del jefe es requerido");
             $("#area-jefe").css("border-bottom", ErrorStyle);
             return false;
         }
             
-        else{
+        else{ 
+          $("#areas-name").attr("style","");
+          $("#areas-city").attr("style","");
+          $("#area-jefe").attr("style","");
+
+            this._data = { 
+                nombre: this._areaNombre,
+                id_ciudad: this._areaCiudad,
+                id_usuario_jefe: this._areaJefe 
+            }
 
            switch (this._action) {
               case "update":
-               
-                   this.request.put('areas', id_, { nombre: nombre ,id_ciudad: 1,id_usuario_jefe:id_usuario_jefe } ).subscribe((res)=>{
-                       this._alert("success", "Registro Agregado Con Exito");
-                         this.getAreas(this._currentPageAreas);
-                       this.goTo('panel');
+                   this.request.put('areas', this._arearId, this._data ).subscribe((res)=>{
+                      this._alert("success", "Registro Cambiado Con Exito");
+                      this.getAreas(this._currentPageAreas);
+                      this.goTo('panel');
                    }); 
               break;
-
               case "create":
-                  this.data = { 
-                    nombre: nombre,
-                    id_ciudad: 1,
-                    id_usuario_jefe:id_usuario_jefe
-                 }
-                       this.request.post('areas', this.data ).subscribe((res)=>{
-                              this._alert("success", "Registro Agregado Con Exito");
-                              this.getAreas(this._currentPageAreas);
-                            this.goTo('panel');
-                        });
-                    break;
+                    this.request.post('areas', this._data ).subscribe((res)=>{
+                        this._alert("success", "Registro Agregado Con Exito");
+                        this.getAreas(this._currentPageAreas);
+                        this.goTo('panel');
+                    });
+              break;
                   }
-
-                setTimeout(function(){
-                   this._this.showCurrentPanel("AREAS");
-                    $("#row-areas-"+id_).css("animation-name","setThisActive");
-                },800);
-                this.data = "";
+          this._data = "";
       }
     }
     //:::Fin areas
 
-
+    //GUARDAR Y EDITAR GRUPOS.
   	CRUDgrupos(){
       var Name = $("#group-name"),
           Area = $("#group-area"),
-          ErrorStyle = "2px solid #800000";
+          ErrorStyle = "2px solid #800000";  
 
-  		switch (this._action) {
-  			case "create":
-          Name.attr("style","");
-          Area.attr("style","");
+      if ( this._grouptName == "" || this._grouptName == undefined ){
+          this._alert("danger", "Por favor ingresa un Nombre");
+            Name.css("border-bottom", ErrorStyle);
+      }
 
-          if ( this._grouptName == "" || this._grouptName == undefined ){
-  					    this._alert("danger", "Por favor ingresa un Nombre");
-                Name.css("border-bottom", ErrorStyle);
-  				}
-          else if ( this._groupArea == "" || this._groupArea == undefined  || this._groupArea == "init"){
-                this._alert("danger", "Por favor ingresa una Area");
+      else if ( this._groupArea == "" || this._groupArea == undefined  || this._groupArea == "init"){
+            this._alert("danger", "Por favor ingresa una Area");
                 Area.css("border-bottom", ErrorStyle);
-          }
+        }else{
+            Name.attr("style","");
+            Area.attr("style","");
+            
+            this._data = { nombre:this._grouptName, id_area: this._groupArea };
+              switch (this._action) {
+                  case "create":
+                      this.request.post('grupos', this._data ).subscribe((res)=>{
+                              this._alert("success", "Registro Agregado Con Exito");
+                              this.getGrupos(1);
+                              this.goTo('panel');
+                      });
+                    break;
 
-          else{
-
-            this.data = {nombre:this._grouptName,id_area: this._groupArea};
-  						this.request.post('grupos', this.data ).subscribe((res)=>{
-		  	 			   this._alert("success", "Registro Agregado Con Exito");
-  								this.getGrupos(1);
-  								this.goTo('panel');
-						});
-  				}
-  			break;
-
-  			case "update":
-  				var nombre  = $("#group-name").val(),
-  					  id_area = $("#group-area").val(),
-  					  id_		  = $("#group-id").val();
-
-       
-           if ( nombre == "" || nombre == undefined ){
-                this._alert("danger", "Por favor ingresa un Nombre");
-                Name.css("border-bottom", ErrorStyle);
-            }
-            else if ( id_area == "" || id_area == undefined  || id_area == "init"){
-                this._alert("danger", "Por favor ingresa una Area");
-                Area.css("border-bottom", ErrorStyle);
-            }else{
-                  this.request.put('grupos', id_, {nombre: nombre,id_area: id_area } ).subscribe((res)=>{
-                   this._alert("success", "Registro Editado Con Exito")
-                      this.getGrupos(this._currentPage);
-                      this.goTo('panel');
-                     setTimeout(function(){
-                        $("#row-group-"+id_).css("animation-name","setThisActive");
-                     },200); 
-                  });
-            }
-  			break;
-  		}
-       this.data = "";
+                    case "update":
+                        this.request.put('grupos', this._groupId, this._data ).subscribe((res)=>{
+                            this._alert("success", "Registro Editado Con Exito")
+                            this.getGrupos(this._currentPage);
+                            this.goTo('panel');
+                        });
+                  break;
+              }
+          this._data = "";
+        }
   	}
 
+    //GUARDAR Y EDITAR PERFILES.
     CRUDperfiles(){
-      var nombre   = $("#perfiles-names").val(),
-          id_grupo = $("#perfiles-grupos").val(),
-          id_      = $("#perfiles-id").val();
-
-      if ( nombre == undefined || nombre == ''){
-          this._alert("danger", "Por favor ingresa un nombre")
+     if ( this._pefilesName == undefined || this._pefilesName == ''){
+          this._alert("danger", "Por favor ingresa un nombre");
       }
 
-       if ( id_grupo == undefined || id_grupo == 'init'){
-          this._alert("danger", "Por favor ingresa un grupo")
+       if ( this._pefilesGrupos == undefined || this._pefilesGrupos == 'init'){
+          this._alert("danger", "Por favor ingresa un grupo");
       }
-
       else{
+         this._data = { nombre:this._pefilesName , id_grupo: this._pefilesGrupos };
           switch (this._action) {
             case "create":
-              var nombre  = $("#perfiles-names").val(),
-                  id_grupo = $("#perfiles-grupos").val();
-                  //id_    = $("#group-id").val();
-                this.data = { nombre:nombre , id_grupo: id_grupo};
-
-                this.request.post('perfiles', this.data ).subscribe((res)=>{
+                this.request.post('perfiles', this._data ).subscribe((res)=>{
                      this._alert("success", "Perfil Agregado Con Exito")
                     this.getPerfiles(1);
                     this.goTo('panel');
                 });
             break;
-
             case "update":
-                this.data = { nombre:nombre , id_grupo: id_grupo};
-
-                this.request.put('perfiles', id_, this.data ).subscribe((res)=>{
+                this.request.put('perfiles', this._pefilesId, this._data ).subscribe((res)=>{
                   this._alert("success", "Perfil Editado Con Exito");
                     this.getPerfiles(this._currentPagePerfiles);
                     this.goTo('panel');
                 });
             break;
           }
-           setTimeout(function(){
-              this._this.showCurrentPanel("PERFILES");
-              console.warn("#row-perfiles-"+id_);
-               $("#row-perfiles-"+id_).css("animation-name","setThisActive");
-           },800);
-
-           this.data = "";
-
-      }  
+          this._data = "";
+      } 
     }
-
+    //ELIMINAR PERFILES, ARES Y GRUPOS
     delete(param:any, from:string){
         this.request.delete(from, param).subscribe((res)=>{
                 switch (from) {
@@ -356,34 +319,21 @@ export class CompanyComponent implements OnInit {
   			this._viewActive = view;
 
   			if ( action == "update" && this._viewActive == "group"){
-  				setTimeout(function(){
-  					$("#group-id").val(param.id);
-  					$("#group-name").val(param.nombre);
-					  $("#group-area").val(param.id_area);
-		  		},0);	
+          this._grouptName = param.nombre;
+          this._groupId    = param.id;
+          this._groupArea  = param.id_area;
   			}
   			if ( action == "update" && this._viewActive == "area"){
-  				setTimeout(function(){
-            var city = $("#areas-city")
-                city.val(param.id_ciudad);
-                city.find(':selected').text( param.ciudad.nombre );
-             if ( param.usuario_jefe != null ){
-                 $("#area-jefe").val(param.usuario_jefe.nombre).attr("data-id", param.usuario_jefe.id_usuario_jefe);
-             }
-  					$("#areas-id").val(param.id);
-  					$("#areas-name").val(param.nombre);
-		  		},0);	
+          this._arearId    = param.id;
+          this._areaNombre = param.nombre;
+          this._areaCiudad = param.id_ciudad;
+          this._areaJefe   = param.id_usuario_jefe;
   			}
         if ( action == "update" && this._viewActive == "perfil"){
-          setTimeout(function(){
-            //console.warn(param);
-            var city = $("#perfiles-grupos")
-                city.val(param.id_grupo);
-                city.find(':selected').text( param.grupo.nombre );
-
-            $("#perfiles-names").val(param.nombre);
-            $("#perfiles-id").val(param.id);
-          },0);  
+          this._pefilesId     = param.id;
+          this._pefilesName   = param.nombre;
+          this._pefilesGrupos = param.id_grupo;
+            //console.warn("Buscame: ", param); 
         }
   		
   	}
