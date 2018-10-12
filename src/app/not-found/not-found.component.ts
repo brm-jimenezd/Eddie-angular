@@ -10,6 +10,7 @@ export class NotFoundComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  	console.warn("Cambiar el base href del index.html compilado");
   }
 
 }

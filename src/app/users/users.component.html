@@ -2,176 +2,170 @@
 		<li class="breadcrumb-item">
 			<a routerLink="/tablero/tasks"> Admin </a>
 		</li>
-		<li class="breadcrumb-item">
-			<a routerLink="/tablero/tasks"> Usuarios </a>
+		<li class="breadcrumb-item" (click)="goTo('list')">
+			<a> Usuarios </a>
 		</li>
-		<li class="breadcrumb-item active"> Añadir </li>
+		<li class="breadcrumb-item active"> {{_viewActive}} </li>
 	</ul>
 
-
+<!--Listar Usuarios-->
+<div class="list" *ngIf="_viewActive == 'ListaUsuarios'">
 	<section class="tasks-info d-flex ">
-		<h5>
+		<h5 class="colorBlue">
 			<span class="icon icon-calendar">
-				<img src="/assets/icons/calendar.svg" class="icon-brm icon-info" />
+				<span class="uber-users icon-brm icon-info"> </span>
 			</span>
-				<span class="title colorBlue">CREANDO NUEVA TAREA: </span>
+				<span class="title ">USUARIOS </span>
 		</h5>
+		<button type="button" class="btn btn-dark ml-auto" (click)="goTo('Crear')"> <span class="icon uber-plus"></span> Nuevo Usuario</button>
+	</section>
+	<section class="d-flex">
+		<table class="table table-striped">
+			<thead>
+				<tr >
+					<th scope="col">Nombre</th>
+					<th scope="col">Usuario</th>
+					<th scope="col">Correo Electrónico</th>
+					<th scope="col">Fecha de Creación</th>
+					<th scope="col">Acciones</th>
+				</tr>
+			</thead>
+			
+			<tbody>
+				<tr *ngFor="let usuario of _users; let i = index;">
+					<td>{{usuario.nombre}}</td>
+					<td>{{usuario.usuario}}</td>
+					<td>{{usuario.correo}}</td>
+					<td>{{usuario.fecha}}</td>
+					<td id="delete">
+						<ul>
+							<li (click)="goTo('Crear','update', usuario)">
+								<a href="dashboard/users/" ><span class="uber-pencil icon"></span></a>
+							</li>
+							<li><a href="" data-toggle="modal" data-target="#DeleteModal"><span class="uber-trash icon"></span></a></li>
+						</ul>
+					</td>
+				</tr>
+				
+				
+			</tbody>
+			
+		</table>
+	</section>
+	<section>
+		<ul class="pagination pagination-xl justify-content-center admin-pagination">
+			  <li class="page-item"><a class="page-link" href="#"><span class="uber-arrow-left"></span></a></li>
+			  
+			  <li class="page-item active" *ngFor="let pages of _totalPage" (click)="getGrupos(pages)" [class.active]="_currentPage == pages">
+			  	<a class="page-link">{{pages}}</a>
+			  </li>	
+
+			<li class="page-item"><a class="page-link" href="#"><span class="uber-arrow-rigth"></span></a></li>
+		</ul>
+	</section>
+</div>
+
+<!--Listar Usuarios-->
+
+<!--Crear Usuario-->
+<div class="create" *ngIf="_viewActive == 'Crear'">
+	<section class="tasks-info d-flex ">
+		<h6 >
+			<span class="title colorBlue"> DATOS BASICOS</span>
+		</h6>
+		<button type="button" class="btn btn-dark ml-auto" (click)="goTo('ListaUsuarios')" > <span class="uber-arrow-left"></span> Volver</button>
 	</section>
 
 	<section id="all-order">
-		<article class="work-order">
+		<article class="card-ot">
 			<div class="main">
-				<header class="d-flex header-order-work">
-					<span class="bag-brm left-bag-brm bag-proceso"> Nueva OT </span>
-						<div class="ml-auto work-datetime">
-							<span class="bag-brm"> OT-755 </span>
-						</div>
+				<header class="d-flex card-ot-header">
+					<span class="bag-brm left-bag-brm bag-proceso"> Nuevo Usuario </span>	
 				</header>
-				<div class="body-work-order">
-					<p>Todos los campos marcados so obligatorios * </p>
-						<div action="/action_page.php" class="row brm-forms">
-							<div class="form-group col-sm-12 col-md-6">
-								<select name="cars" class="custom-select mb-3">
-								    <option selected>Cliente</option>
-								</select>
+
+				<div class="card-ot-body">
+					<p>Todos los campos marcados son obligatorios * </p>
+						<form action="" class="row brm-forms">
+							<div class="form-group col-sm-12 col-md-6">	
+								<p>Nombre</p>
+								<input type="text" placeholder="Nombre" id="nombre" name="nombre" [(ngModel)]="_userName" >	
 							</div>
-						    <div class="form-group col-sm-12 col-md-6">
-							    <select name="cars" class="custom-select mb-3">
-								    <option selected>Marca</option>
-								  </select>
+							<div class="form-group col-sm-12 col-md-6">	
+								<p>Correo Electrónico</p>
+								<input type="text" placeholder="correo@email.com" id="correo" name="correo" [(ngModel)]="_userEmail">	
 							</div>
-							<div class="form-group col-sm-12 col-md-6">
-								<select name="cars" class="custom-select mb-3">
-								    <option selected>Tipo OT</option>
-								</select>
+							<div class="form-group col-sm-12 col-md-6">	
+								<p>Usuario</p>
+								<input type="text" placeholder="Nombre de Usuario" id="usuario" name="usuario" [(ngModel)]="_userSName">	
 							</div>
-						    <div class="form-group col-sm-12 col-md-6">
-							    <select name="cars" class="custom-select mb-3">
-								    <option selected>Sub - Tipo OT</option>
-								 </select>
+							<div class="form-group col-sm-12 col-md-6">	
+								<p class="sibling-select">Rol</p>
+								<select name="" id="" class="custom-select">
+									<option value="" selected>Seleccionar Rol</option>
+									<option value="" >Administrador</option>
+									<option value="">Recursos Humanos</option>
+								</select>	
 							</div>
-						</div>
-				</div>
-			</div>
-		</article>
-	</section>
-
-	<section id="all-order">
-		<article class="work-order">
-			<div class="main">
-				<div class="form-group col-sm-12">
-					<input type="text" class="form-control orderWorkTitle" id="pwd" placeholder="Escribe el título de la OT"  >
-				</div>
-
-				<div class="body-work-order">
-					<div class="add-new-comment brm-form">
-						<textarea placeholder="Escribe las instrucciones"></textarea>
-					</div>
-				</div>
-			</div>
-		</article>
-	</section>
-
-	<section class="tasks-info d-flex ">
-		<h5> 
-			<span class="icon icon-calendar">
-				<img src="/assets/icons/clock.svg" class="icon-brm icon-info" />
-			</span>
-				<span class="title colorBlue">TIEMPO ESTIMADO: </span>
-		</h5>
-	</section>
-			
-	<section id="all-order">
-		<article class="work-order">
-			<div class="main">
-				<div class="body-work-order">
-					<div action="" class="row brm-forms">
-						<div class="form-group col-sm-6 col-md-2 d-flex type-time">
-							<input type="number" class="form-control" id="hours" placeholder="Horas:">
-							<div class="data-time">00</div>
-						</div>
-						<div class="form-group col-sm-6 col-md-2 d-flex type-time">
-								<input type="number" class="form-control" id="minutes" placeholder="Min:">
-								<div class="data-time">00</div>
-						</div>
-						<div class="form-group col-sm-6 col-md-4">
-							<input type="date" class="form-control" id="pwd" placeholder="Agregar una url aquí">
-						</div>
-						<div class="form-group col-sm-6 col-md-4">
-							<input type="date" class="form-control" id="pwd" placeholder="Agregar una url aquí">
-						</div>
-					</div>
-				</div>
-			</div>
-		</article>
-	</section>
-
-	<section class="tasks-info d-flex ">
-		<h5>
-			<span class="icon icon-calendar">
-				<img src="/assets/icons/pencil.svg" class="icon-brm icon-info" />
-			</span>
-					<span class="title colorBlue">LINKS RELACIONADOS: </span>
-		</h5>
-	</section>
-			
-	<section id="all-order">
-		<article class="work-order">
-			<div class="main">
-				<div class="body-work-order">
-					<form action="/action_page.php" class="row brm-forms">
-						<div class="form-group col-sm-12">
-							<input type="text" class="form-control link-relacionados" id="pwd" placeholder="Agregar una url aquí">
-						</div>
-					</form>
-
-					<button type="button" class="btn btn-primary btn-block btn-brm-add-url btn-brm-showAll d-flex justify-content-center">
-							AGREGAR OTRA URL <div class="icon-plus">+</div>
-					</button>
+						</form>
 				</div>
 			</div>
 		</article>
 		<footer class="brm-form-actions d-flex justify-content-end">
-			<button type="button" class="btn btn-danger btn-brm-delete">
-				ELIMINAR
-			</button>
-			<button type="button" class="btn btn-dark btn-brm-create">
-				ASIGNAR TAREA
-			</button>
-		</footer>
-	</section>
-
-	<section class="tasks-info d-flex ">
-		<h5>
-			<span class="icon icon-calendar">
-				<img src="/assets/icons/pencil.svg" class="icon-brm icon-info" />
-			</span>
-			<span class="title colorBlue">Asignar responsable: </span>
-		</h5>
-	</section>
-
-	<section id="all-order">
-		<article class="work-order">
-			<div class="main">
-				<div class="body-work-order">
-					<div action="" class="row brm-forms">
-						<div class="form-group col-sm-12 col-md-4">
-							<select name="cars" class="custom-select mb-3">
-								<option selected>Franja Horaria</option>
-							</select>
-						 </div>
-						 <div class="form-group col-sm-12 col-md-8">
-							<select name="cars" class="custom-select mb-3">
-								 <option selected>Marca</option>								  
-							</select>
-						</div>
-					</div>
-				</div>
-			</div>
-		</article>
-		<footer class="brm-form-actions d-flex justify-content-end">
-			<button type="button" class="btn btn-dark btn-brm-create">
-				ASIGNAR TAREA
+			<a class="btn btn-brm-delete" href="dashboard/users-list" data-toggle="modal" data-target="#CancelModal">
+				CANCELAR
+			</a>
+			<button type="button" class="btn btn-dark btn-brm-create" (click)="CRUDusers()">
+				CREAR
 			</button>
 		</footer>
 	</section>
+</div>
+
+	<!--Crear Usuario-->
+
+	<!-- Modal -->
+<div class="modal fade" id="CancelModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Advertencia</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-center">
+        Si cancela se perdera la información actual. ¿Esta seguro?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+        <button type="button" class="btn btn-brm-delete-modal" data-dismiss="modal" (click)="goTo('ListaUsuarios')">Si</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Advertencia</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-center">
+        ¿Esta seguro de eliminar el usuario del sistema?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-brm-delete-modal">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+	
+	
+	

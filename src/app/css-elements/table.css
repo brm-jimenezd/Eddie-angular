@@ -1,12 +1,10 @@
 /*::::::::::ADMINISTRADOR GRUPOS,AREAS, PERFILES::::::::*/
-
 ul.tabs-admin .nav-item a{
 	color: #ccc;
 }
 ul.tabs-admin .nav-item a.active{
 	color: #002F6C;
 }
-
 .table-admin .loading{
 	padding:10px;
 	padding-left:25px;

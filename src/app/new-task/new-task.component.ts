@@ -8,7 +8,7 @@ declare var $:any;
 @Component({
   selector: 'app-new-task',
   templateUrl: './new-task.component.html',
-  styleUrls: ['./../css-elements/forms.css','./../tasks/tasks.component.css']
+  styleUrls: ['./new-task.component.css','./../css-elements/forms.css','./../tasks/tasks.component.css']
 })
 
 export class NewTaskComponent implements OnInit {
@@ -31,10 +31,11 @@ export class NewTaskComponent implements OnInit {
     _minutes:number;
     _startDate:any;
     _endDate:any;
-    _linksRelations = new Array();
     _timeZone: any;
     _responsable: string;
     _data:any;
+    _urls:string = "";
+    _urlsValidationEnd:boolean;
 
     //alerts
    _alertClass:string;
@@ -51,42 +52,117 @@ export class NewTaskComponent implements OnInit {
         this._alertText = text;
         this._alertState = true;
     }
+    //Valida el formato de la url
+    _ValidUrl(url:any){
+      var pattern = /^(http|https)\:\/\/[a-z0-9\.-]+\.[a-z]{2,4}/gi;
+        if( url.match(pattern) )
+            return true;
+        else
+            return false;
+    }
+    //Retorna alertas cuando los valores de la url son invalidos
+    checkingUrlsFields(isvalid:boolean, type:string, val:string, index?:number ){
+        //console.info("Entrado a checkingUrlsFields");
+        let url_element = $(".link-relacionados"); 
+        let url_files_total = url_element.length;
+        let separator:string = "ø";
+
+        //console.warn("isvalid: ", isvalid);
+        //console.info("type: ", type);
+        //console.warn("val: ", val);
+        //console.info("index: ", index);
+
+          if ( isvalid == false ){
+              this._urlsValidationEnd = false;
+              this._alert("danger", "Ingresa una url Valida");
+              return false;
+          }else{
+              this._urlsValidationEnd = true;
+              this._urls += val;
+              if( type == "multiple" ){
+                if ( index+1 != url_files_total ){
+                      this._urls += separator;
+                  }
+              }
+              return;
+          }
+      }
+
+    //Regresa el formato para las urls 
+    _formatToUrls(){
+      this._urls = "";
+      let url_element = $(".link-relacionados"); 
+      let _this = this;
+
+        //Anidando multiples Urls
+        if ( url_element.length > 1 ){
+          //console.info("validar _formatToUrls dos urls");
+              url_element.each(function(ind){
+                let val = $(this).val().trim();
+                let validUrl = _this._ValidUrl( val );
+                    _this.checkingUrlsFields(validUrl, "multiple", val, ind);
+              });
+        //Anindando una sola Url
+        }else{
+           //console.info("validar _formatToUrls una url");
+                let value = url_element.val().trim();
+                let validUrl = _this._ValidUrl( value );
+                    this.checkingUrlsFields(validUrl, "normal", value);
+        }
+    }
 
     saveOTS(){
-
       if ( this._client == undefined || this._client == "init"){
-              this._alert("danger", "Ingresa un Nombre");
+              this._alert("danger", "Ingresa Un Cliente");
+              return false;
       }
 
       if( this._marca == undefined || this._marca == "init"){
-              this._alert("danger", "Ingresa una marca");
+              this._alert("danger", "Ingresa Una Marca");
+              return false;
       }
 
       if( this._tipeOT == undefined || this._tipeOT == "init"){
-            this._alert("danger", "Ingresa una marca");
+            this._alert("danger", "Ingresa Un tipo de OT");
+            return false;
       }
 
 
       if ( this._titleOT == undefined || this._titleOT == "" ){
             this._alert("danger", "Ingresa un titulo");
+            return false;
       }
 
       if ( this._instructions == undefined || this._instructions == "" ){
            this._alert("danger", "Ingresa una instruccion");
+           return false;
       }
 
-      if ( this._hours == undefined ){
-           this._alert("danger", "Ingresa una Hora");
+      if ( this._hours == undefined || this._hours > 24){
+           this._alert("danger", "Ingresa una Hora Válida");
+           return false;
       }
 
+      if ( this._minutes == undefined || this._minutes > 59){
+            this._alert("danger", "Ingresa Minutos Válidos");
+            return false;
+      }
 
       if ( this._startDate == undefined ){
           this._alert("danger", "Ingresa una Fecha de Inicio");
+          return false;
       }
 
       if ( this._endDate == undefined ){
           this._alert("danger", "Ingresa una Fecha de Final");
+          return false;
       }
+
+       if ( this._startDate > this._endDate){
+           this._alert("danger", "La fecha de Inicio: (<b>"+this._startDate+"</b>) es mayor a la de finalización (<b>"+this._endDate+"</b>)");
+            return false;
+        }
+
 
       if ( this._responsable == undefined ){
           this._alert("danger", "Ingresa al menos un responsable");
@@ -96,49 +172,45 @@ export class NewTaskComponent implements OnInit {
            this._alert("danger", "Ingresa una zona Horaria");
       }
 
-      else{
-        let links = [];
-          $(".link-relacionados").each(function(){
-            var value = $(this).val();
-                links.push("s");
-          });
-           this._linksRelations = links;
-          //console.error( this._linksRelations );
+      else{ 
+        console.info(this._startDate);
+        console.info(this._endDate);
 
-        this._data = {
-             identificador: "OT1",
-             id_estado: 1,
-             titulo: "pruebas",
-             descripcion: "pruebas de OTS1",
-             fecha_inicio: "2018-09-25",
-             fecha_fin: "2018-09-30",
-             id_cliente: 3,
-             id_marca: 12,
-             id_grupo: 1,
-             id_tipo_ot: 4,
-             tiempo_asignado: "02:00:00",
-             id_usuario_crea: 1,
-             id_franja_horaria: 1,
-             tiempo_gastado: "10:00:00",
-             url_archivos: "files",
-             fecha_cierre: "2018-09-30",
-             id_usuario_responsable: [1,2,3,4,5],
-         }
+       
 
-          this.request.post('ots', this._data ).subscribe((res)=>{
+        this._formatToUrls();
+        if ( this._urlsValidationEnd == true ){
+              this._data = {
+                    url:this._urls,
+                    id_usuarios_responsables:"11ø222ø33",
+                    identificador:"OTDuv2",
+                    fecha:"2018-09-28 15:25:04",
+                    id_estado:"1",
+                    titulo: this._titleOT,
+                    descripcion:this._instructions,
+                    fecha_inicio: this._startDate,
+                    fecha_fin: this._endDate,
+                    id_cliente: this._client,
+                    id_marca: this._marca,
+                    id_grupo: "1",
+                    id_tipo_ot: this._tipeOT,
+                    tiempo_asignado: this._hours+":00:00",
+                    id_usuario_crea:"1"
+              }
+
+        /* this.request.post('ots', this._data ).subscribe((res)=>{
             //console.warn(res);
              //this._alert("success", "Registro Editado Con Exito");
                       //this.getMarcas(this._currentPage);
                
-          }); 
-
-      }
-
-      }
+          });*/
+       }
+    }
+  }
 
     addUrl(){
        var url = $(".link-relacionados:first-child").clone();
-       $("#relations-links").append(url);
+           $("#relations-links").append(url);
     }
 
     removeUrl(){

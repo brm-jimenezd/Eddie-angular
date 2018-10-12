@@ -13,7 +13,9 @@ import { Observable } from 'rxjs/Observable';
 })
 
 export class RequestService {
-	private domain = "https://eddie-ctangarife.c9users.io/api/";
+	
+  private domain = "https://fbapp.brm.com.co/gestion/index.php/api/";
+  //private domain = "https://eddie-ctangarife.c9users.io/api/";
   constructor( private http:Http) { }
 
   public post(url: string, params:string){

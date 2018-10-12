@@ -7,7 +7,7 @@
 		<!--LOGO DE LA MARCA-->
 		<figure class="navbar-brand mr-auto brand-logo">
 			<a (click)="logout()">
-				<img src="/assets/logo-brm.png"/>
+				<img src="assets/logo-brm.png"/>
 			</a>
 		</figure>
 
@@ -50,7 +50,7 @@
 	  <div class="ml-auto logs-container d-flex" id="desktop-notifications">
 	  	<figure class="user-logs" (click)="showuserNotify()">
 	  		<span class="badge badge-danger">20</span>
-	  		<img src="/assets/icons/ring.svg"/>
+	  		<img src="assets/icons/ring.svg"/>
 	  	</figure>
 	  	<section class="user-notifications" id="user-notifications" [class.show]="notifyState">
 	  		<div class="tool-tip-notifi"></div>
@@ -151,42 +151,42 @@
 	  			<ul>
 	  				<li (click)="selectedItem($event)"> 
 	  					<a class="d-flex" routerLink="/{{_pageName}}/users">
-		  						<img src="/assets/icons/star.svg" class="brm-icon">
+		  						<img src="assets/icons/star.svg" class="brm-icon">
 		  					<span> Usuarios</span>
 		  					<button type="button" class="btn btn-dark">+</button>
 	  					</a>
 	  				</li>
 	  				<li (click)="selectedItem($event)"> 
 	  					<a routerLink="/{{_pageName}}/company" class="d-flex"> 
-		  						<img src="/assets/icons/star.svg" class="brm-icon">
+		  						<img src="assets/icons/star.svg" class="brm-icon">
 		  					<span> Compañia </span>
 		  					<button type="button" class="btn btn-dark">+</button>
 		  				</a>
 	  				</li>
 	  				<li (click)="selectedItem($event)">
 	  					<a routerLink="/{{_pageName}}/clients" class="d-flex">  
-		  						<img src="/assets/icons/star.svg" class="brm-icon">
+		  						<img src="assets/icons/star.svg" class="brm-icon">
 		  					<span> Clientes</span>
 		  					<button type="button" class="btn btn-dark">+</button>
 		  				</a>
 	  				</li>
 	  				<li (click)="selectedItem($event)">
 	  					<a routerLink="/{{_pageName}}/brands" class="d-flex">  
-		  						<img src="/assets/icons/star.svg" class="brm-icon">
+		  						<img src="assets/icons/star.svg" class="brm-icon">
 		  					<span> Marcas</span>
 		  					<button type="button" class="btn btn-dark">+</button>
 		  				</a>
 	  				</li>
 	  				<li (click)="selectedItem($event)"> 
-	  					<a routerLink="/{{_pageName}}/" class="d-flex">  
-		  						<img src="/assets/icons/star.svg" class="brm-icon">
+	  					<a routerLink="{{_pageName}}/" class="d-flex">  
+		  						<img src="assets/icons/star.svg" class="brm-icon">
 		  					<span> Ciudades </span>
 		  					<button type="button" class="btn btn-dark">+</button>
 		  				</a>
 	  				</li>
 	  				<li (click)="selectedItem($event)"> 
 	  					<a routerLink="/{{_pageName}}/orders" class="d-flex"> 
-		  						<img src="/assets/icons/star.svg" class="brm-icon">
+		  						<img src="assets/icons/star.svg" class="brm-icon">
 		  					<span> Ordenes de trabajo </span>
 		  					<button type="button" class="btn btn-dark">+</button>
 		  				</a>
@@ -206,13 +206,13 @@
 			<input type="text" class="form-control" placeholder="Buscar...">
 			    <div class="input-group-append">
 			      <span class="input-group-text">
-			      		<img src="/assets/icons/search.svg" />
+			      		<img src="assets/icons/search.svg" />
 			      	</span>
 			    </div>
 		</div>
 	<!--search-->	
 		<div class="filter-title"> 
-			<span class="icon-filter"> <img src="/assets/icons/filter.svg"> </span>
+			<span class="icon-filter"> <img src="assets/icons/filter.svg"> </span>
 			<span class="title"> FILTRAR POR: </span>
 			
 
@@ -226,9 +226,9 @@
 			  <div class="card">
 			    <div class="card-header">
 			      <a class="card-link" data-toggle="collapse" href="#collapseOne">
-			       	<img src="/assets/icons/star.svg" class="icon-info">
+			       	<img src="assets/icons/star.svg" class="icon-info">
 			       		Marca
-			       	<img src="/assets/icons/arrow-down.svg" class="icon-toggle">
+			       	<img src="assets/icons/arrow-down.svg" class="icon-toggle">
 			      </a>
 			    </div>
 
@@ -242,9 +242,9 @@
 			  <div class="card">
 			    <div class="card-header">
 			      <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
-			        	<img src="/assets/icons/calendar.svg" class="icon-info">
+			        	<img src="assets/icons/calendar.svg" class="icon-info">
 			       			Fecha
-			       		<img src="/assets/icons/arrow-down.svg" class="icon-toggle">
+			       		<img src="assets/icons/arrow-down.svg" class="icon-toggle">
 			      </a>
 			    </div>
 			    <div id="collapseTwo" class="collapse" data-parent="#accordion">
@@ -257,9 +257,9 @@
 			  <div class="card">
 			    <div class="card-header">
 			      <a class="collapsed card-link" data-toggle="collapse" href="#collapseThree">
-			        	<img src="/assets/icons/pencil.svg" class="icon-info">
+			        	<img src="assets/icons/pencil.svg" class="icon-info">
 			       			Usuario
-			       		<img src="/assets/icons/arrow-down.svg" class="icon-toggle">
+			       		<img src="assets/icons/arrow-down.svg" class="icon-toggle">
 			      </a>
 			    </div>
 			    <div id="collapseThree" class="collapse" data-parent="#accordion">
@@ -272,9 +272,9 @@
 			  <div class="card">
 			    <div class="card-header">
 			      <a class="collapsed card-link" data-toggle="collapse" href="#collapseFourth">
-			        	<img src="/assets/icons/notepad.svg" class="icon-info">
+			        	<img src="assets/icons/notepad.svg" class="icon-info">
 			       			Estado
-			       		<img src="/assets/icons/arrow-down.svg" class="icon-toggle">
+			       		<img src="assets/icons/arrow-down.svg" class="icon-toggle">
 			      </a>
 			    </div>
 			    <div id="collapseFourth" class="collapse" data-parent="#accordion">

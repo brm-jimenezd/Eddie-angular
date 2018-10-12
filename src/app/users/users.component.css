@@ -1,0 +1,12 @@
+.uber-user, .uber-users{
+	font-size: 1.5em;
+	margin-right: 5px;
+}
+
+.brm-forms .form-group input{
+	width:100%;
+}
+
+.brm-forms .form-group p.sibling-select{
+	margin-bottom: 5px !important;
+}

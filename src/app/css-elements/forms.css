@@ -13,15 +13,21 @@
 	color: #002F6C;
     font-weight: 300;
     font-size: 13px;
-    margin-top: 13px;
+    padding-top: 13px;
     background-color: transparent !important;
     border-color: transparent !important;
+    border-radius: 0px;
 }
 .btn-brm-add-url div.icon-plus{
 	margin-left: 10px;
 	line-height: 1.4;
 	margin-top: -9px;
 	width: 35px !important;height: 35px !important;
+}
+.btn-brm-add-url div.icon-plus:hover{
+	background-color: #e69900 !important; 
+	transition:0.5s all;
+	/*border-color: #e69900 !important;  //fafafa //e69900*/
 }
 
 .form-group .autocomplete{
